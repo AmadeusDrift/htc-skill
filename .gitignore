@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.pem
+*.key
+/output/
+/runs/
+/local/
+/tmp/
+*.psd
+*.psb

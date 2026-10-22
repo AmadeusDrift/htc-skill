@@ -1,0 +1,30 @@
+# 文案约束与官方依据
+
+核对日期：2026-10-20。以下为当前查到的官方页面摘要，不是完整平台规则。Seller Central 部分正文需要登录，公开检索摘录可见但直开可能仅返回登录壳；遇到冲突按适用站点/类目后台最新要求复核。不要沿用旧底座的“默认 200 字标题”或“五点总共 1000 bytes 是收录上限”等未经核实结论。
+
+## 证据与适用范围
+
+| 项目 | 结论/处理 | 来源 |
+|---|---|---|
+| 标题 | 2026-07-27 起非媒体产品标题上限 75 字符（含空格），新增 125 字符 Item highlights；官方政策变更页列出 Egypt、Saudi Arabia、Türkiye、UAE 为例外。默认 US 非媒体采用 75；其他站点/类目确认后配置。Item highlights 不是五点，不拼回标题 | https://sellercentral.amazon.com/help/hub/reference/external/GQHQGBTD7XB7EECN?language=en_US |
+| 标题公告 | 可公开看到的 Amazon 官方公告；不要把下面卖家回帖当规则 | https://sellercentral.amazon.com/seller-forums/discussions/t/145b6d0f-999c-4555-896c-c694bda2e470 |
+| 五点 | 官方要求至少三条、长度随产品类型；句首大写、句段表达、不加末尾标点，分号分隔；避免重复、全大写、emoji、促销/退款保证、外链等。本项目交付五条 | https://sellercentral.amazon.com/help/hub/reference/external/GX5L8BF8GLMML6CX?language=en_us |
+| 详情页 | 准确描述、遵守类目指南；不包含价格、联系方式、外链、评价/索评、促销等；默认纯文本，不写 HTML 或脚本 | https://sellercentral.amazon.com/help/hub/reference/external/G200390640?language=en_US |
+| 普通 Amazon 主图 | 普通商城公开指导要求纯白主图，不能据此证明 Haul 的场景图例外 | https://sellercentral.amazon.com/help/hub/reference/external/G15591?language=en_US |
+| 低价商城首图 | 本次公开检索未核实到当前 Haul 类目允许场景主图的完整官方细则。按用户指定生成无字场景首图，将“场景主图适用性未独立核实”写入检查结果；不宣称官方已验证 | 用户明确要求＋待后台核对 |
+
+规则、官方页面更新时重新核对日期、范围和摘要；不把历史摘要当永久真理。
+
+## 本项目写作策略（可配置，不冒充官方限制）
+
+- exactly 5 bullets；建议每条不超过 250 字符用于移动端阅读。类目上限未知则 `bullet_max=null`，将 250 仅作编辑警告。
+- 详情建议控制在 1000 字符内，使用短段；类目上限未知则 `description_max=null`，不默认声称 2000 是通用上限。
+- 标题表达图案主题和核心产品信息，不为了使用长度而补词。不强制所有图案主题只有 2–3 个词。
+- 五点分别覆盖五个有依据的信息角度；资料不足时先给可用部分与待补项，不编造五个卖点。
+- 文案与图片中每个尺寸、材料、功能、套装数量、认证、保修或性能表达都需要确认事实。送礼定位、适用人群仅在产品和图案支持时使用，不堆节日或人群词。
+- 不把图案内容当产品性能：如海浪不等于防水、金属质感不等于金属材质。
+- 机械检测只抓明显问题，不判断是否侵权、是否真的防水或是否每句语义有依据。必须人工/AI 对照事实表逐项检查，不能机械通过就写“合规通过”。
+
+## 文案输出
+
+交付可复制的标题、五条 bullets、纯文本 description。事实映射放旁表/JSON，不混进上传文案。各图案的产品事实保持固定，共用五点和详情；用户要求时才修改指定图案字段。后台词和 Item highlights 仅需要时补充，不扩大本次三个核心文案字段。

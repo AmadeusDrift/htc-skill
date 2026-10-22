@@ -1,0 +1,43 @@
+{
+  "example_only": true,
+  "product": {
+    "id": "DEMO-NOT-FOR-SALE",
+    "type": "Decorative plaque",
+    "marketplace": "US",
+    "language": "en",
+    "facts": [
+      {"id": "shape", "text": "Rectangular decorative plaque with a defined border", "confirmed": true},
+      {"id": "art", "text": "Blue botanical print on the front", "confirmed": true},
+      {"id": "size", "text": "15 x 10 cm", "confirmed": true},
+      {"id": "count", "text": "One plaque; display props not included", "confirmed": true},
+      {"id": "use", "text": "Indoor decorative display", "confirmed": true}
+    ],
+    "print_region": {"confirmed": true, "description": "Front rectangle, leaving the border clear"}
+  },
+  "rules": {
+    "title_max": 75,
+    "title_source": "US non-media; official 2026-07-27 title policy; see references/copy-and-policy.md",
+    "bullet_max": null,
+    "description_max": null,
+    "bullet_target": 250,
+    "description_target": 1000,
+    "image_policy_status": "user_requested_pending_verification"
+  },
+  "listing": {
+    "title": "Blue Botanical Decorative Plaque for Indoor Display, 15 x 10 cm",
+    "bullets": [
+      "Botanical detail: Blue plant artwork decorates the front of the plaque",
+      "Rectangular shape: A defined border frames the printed design",
+      "Measured format: The plaque measures 15 x 10 cm",
+      "Indoor display: Designed as a decorative accent for indoor spaces",
+      "Package contents: Includes one plaque; display props are not included"
+    ],
+    "description": "This rectangular plaque features blue botanical artwork for indoor decorative display. It measures 15 x 10 cm. The package includes one plaque; display props are not included.",
+    "fact_ids": ["shape", "art", "size", "count", "use"]
+  },
+  "gallery": [
+    {"id": "01", "role": "scene", "overlay_text": [], "fact_ids": ["shape", "art", "use"]},
+    {"id": "02", "role": "benefit", "overlay_text": ["Botanical detail"], "fact_ids": ["art"]},
+    {"id": "03", "role": "structure-size", "overlay_text": ["15 x 10 cm", "One plaque included"], "fact_ids": ["size", "count"]}
+  ]
+}
