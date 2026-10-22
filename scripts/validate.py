@@ -11,12 +11,27 @@ def validate(data):
     rules = data.get('rules', {})
     listing = data.get('listing', {})
     gallery = data.get('gallery', [])
+    stage = data.get('validation_stage', 'gallery')
+    schema = data.get('schema_version')
+    if schema not in {None, '0.4'}:
+        errors.append('schema_version must be 0.4 or omitted for legacy data')
+    elif schema is None:
+        warnings.append('Legacy schema: explicit gallery strategy is optional; not proof of a designed gallery')
+    if stage not in {'product-info', 'gallery'}:
+        errors.append('validation_stage must be product-info or gallery')
+    if stage == 'product-info':
+        gallery = []
+        warnings.append('Product-info review only: print placement and gallery have not been checked')
     for key in ('id', 'type', 'marketplace', 'language'):
         if not product.get(key):
             errors.append(f'product.{key} is required')
     region = product.get('print_region', {})
-    if region.get('confirmed') is not True or not region.get('description'):
-        errors.append('product.print_region must be supplied and confirmed by a person')
+    placement = region.get('placement_review', {})
+    delegated_placement = (isinstance(placement, dict) and placement.get('status') == 'delegated'
+                           and bool(placement.get('evidence')))
+    if stage != 'product-info' and (not region.get('description') or
+                                    (region.get('confirmed') is not True and not delegated_placement)):
+        errors.append('product.print_region requires a description and confirmation or explicit placement delegation')
     facts = product.get('facts', [])
     confirmed = {f.get('id') for f in facts if isinstance(f, dict) and f.get('confirmed') is True and f.get('text')}
     if not confirmed:
@@ -30,7 +45,9 @@ def validate(data):
     if not isinstance(bullets, list) or len(bullets) != 5:
         errors.append('listing.bullets must contain exactly five entries (project requirement)')
         bullets = bullets if isinstance(bullets, list) else []
-    text_fields = [('title', title), ('description', description)] + [(f'bullets[{i}]', b) for i, b in enumerate(bullets)]
+    text_fields = [('title', title)] + [(f'bullets[{i}]', b) for i, b in enumerate(bullets)]
+    if 'description' in listing:
+        text_fields.append(('description', description))
     for field, value in text_fields:
         if not isinstance(value, str) or not value.strip():
             errors.append(f'listing.{field} must be nonempty text')
@@ -82,8 +99,14 @@ def validate(data):
             warnings.append(f'bullets[{i}]: remove ending punctuation per bullet guidelines')
         if re.search(r'[\U0001F300-\U0001FAFF\u2600-\u27BF™®©€£¥]', bullet):
             errors.append(f'bullets[{i}]: emoji or restricted symbol')
-    if not isinstance(gallery, list) or len(gallery) not in (3, 4):
-        errors.append('gallery must contain three or four images')
+    image_count = data.get('images_per_set', 7)
+    if not isinstance(image_count, int) or isinstance(image_count, bool) or image_count <= 0:
+        errors.append('images_per_set must be a positive integer')
+        image_count = 7
+    if image_count != 7 and not data.get('images_per_set_source'):
+        errors.append('images_per_set_source must record the user-requested change from seven')
+    if stage != 'product-info' and (not isinstance(gallery, list) or len(gallery) != image_count):
+        errors.append(f'gallery must contain exactly {image_count} images (seven by default)')
         gallery = gallery if isinstance(gallery, list) else []
     ids = [g.get('id') for g in gallery if isinstance(g, dict)]
     if len(ids) != len(gallery) or len(ids) != len(set(ids)) or any(not x for x in ids):
@@ -106,8 +129,48 @@ def validate(data):
         overlay = item.get('overlay_text')
         if not isinstance(overlay, list) or any(not isinstance(t, str) or not t.strip() for t in overlay):
             errors.append(f'gallery[{i}].overlay_text must be a list of nonempty strings')
-        if i and item.get('role') not in {'benefit', 'structure-size', 'tips'}:
+        if i and item.get('role') not in {'benefit', 'structure-size', 'tips', 'function', 'detail', 'size', 'scene', 'use', 'comparison'}:
             errors.append(f'gallery[{i}]: unsupported role')
+    strategy = data.get('gallery_strategy')
+    if schema == '0.4' and stage != 'product-info' and strategy is None:
+        errors.append('gallery_strategy is required by schema_version 0.4')
+    if strategy is not None and stage != 'product-info':
+        if not isinstance(strategy, dict):
+            errors.append('gallery_strategy must be an object')
+        else:
+            for key in ('buyer_profile', 'core_buying_reason', 'visual_direction'):
+                if not isinstance(strategy.get(key), str) or not strategy[key].strip():
+                    errors.append(f'gallery_strategy.{key} is required')
+        for i, item in enumerate(gallery):
+            if not isinstance(item, dict):
+                continue
+            for key in ('buyer_question', 'composition', 'reuse_scope'):
+                if not isinstance(item.get(key), str) or not item[key].strip():
+                    errors.append(f'gallery[{i}].{key} is required for a designed gallery')
+            zh = item.get('overlay_text_zh')
+            if not isinstance(zh, list) or len(zh) != len(item.get('overlay_text', [])):
+                errors.append(f'gallery[{i}].overlay_text_zh must match the English text')
+    workflow = data.get('workflow', {})
+    if not isinstance(workflow, dict):
+        errors.append('workflow must be an object')
+    else:
+        if workflow.get('template_state', 'draft') not in {'draft', 'frozen'}:
+            errors.append('workflow.template_state must be draft or frozen')
+        if workflow.get('stage') not in {None, 'design_draft', 'first_set_ready', 'frozen', 'variants_exported', 'verified_for_declared_templates'}:
+            errors.append('workflow.stage is unknown')
+        if workflow.get('stage') in {'frozen', 'variants_exported', 'verified_for_declared_templates'} and workflow.get('template_state') != 'frozen':
+            errors.append('workflow.stage requires frozen template_state')
+    if isinstance(workflow, dict) and workflow.get('template_state') == 'frozen':
+        review = workflow.get('first_set_review', {})
+        if not isinstance(review, dict) or review.get('status') not in {'approved', 'delegated'} or not review.get('evidence'):
+            errors.append('workflow.first_set_review requires approval or explicit delegation evidence')
+        elif review.get('status') == 'delegated' and review.get('ai_visual_review') is not True:
+            errors.append('workflow.first_set_review.ai_visual_review is required under delegation')
+        hashes = workflow.get('template_hashes')
+        if not isinstance(hashes, dict) or not hashes or any(not isinstance(v, str) or not re.fullmatch(r'[a-fA-F0-9]{64}', v) for v in hashes.values()):
+            errors.append('workflow.template_hashes must record frozen SHA256 values')
+        if workflow.get('variant_method') != 'smart-object-only':
+            errors.append('workflow.variant_method must be smart-object-only after freezing')
     image_status = rules.get('image_policy_status')
     if image_status == 'verified_for_category':
         if not rules.get('image_policy_source'):

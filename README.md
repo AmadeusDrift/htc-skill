@@ -1,78 +1,43 @@
-# POD 低价商城 Listing Skill
+# POD 商品视觉与智能对象母版
 
-为 Amazon 低价商城的 POD 产品制作标题、五点、产品详情及轮播图，图文确认后制作可替换印花的简单 PSD。
+版本 **0.4.0**。用于实物截图／参考资料／印花到商品图文、完整轮播图和可替换PSD；核心是先做好第一套视觉，再冻结母版换印花。不是店铺发布、选品搜索或独立制作工作台。
 
-当前版本：**0.1.1 试用版**。本仓库保存 Skill、提示词流程、输入表及辅助脚本；不是已完成的整套批量制作软件。
+## 使用
 
-接手开发或继续试用，请先读 [POD Skill 交接文档](HANDOFF.md)，其中记录已确认需求、文件职责、验证结果、Photoshop 阻塞及下一步工作。
+使用 `$pod-haul-listing`，提供实物截图、用户指定参考、印花与已确认事实。新商品先规划买家、购买理由、场景、情绪标题、事实卖点和原生排版；完成第一套正式七图后审核／按明确委托自行检查，冻结PSD。后续只能替换智能对象与声明字段，不按印花重做场景或PSD。
 
-## 工作流程
+用户说“不要再改”即只输出；“四套”默认四款各七图，共28张，通用图分别补齐。只要总览、指定图位四宫格或打包，直接组合现有成图，不调用imagegen。化妆镜七图实例不固定成全品类模板。
 
-1. 人工提供并确认产品资料、参考照片、示例图案和贴图区域。
-2. AI 生成标题、五点、产品详情及 3–4 张轮播图。
-3. 人工审核图文，必要时修改，确认同一版本后继续。
-4. 按定稿效果制作简单 PSD：固定画面＋印花智能对象。
-5. 将素材和文案交给独立批量工具及运营上架。
+入口：[SKILL.md](SKILL.md)。视觉：[gallery-prompts.md](references/gallery-prompts.md)。生产：[production-workflow.md](references/production-workflow.md)。PSD：[simple-psd.md](references/simple-psd.md)。交付：[delivery.md](references/delivery.md)。数据：[data-contract.md](references/data-contract.md)。当前交接：[HANDOFF.md](HANDOFF.md)。
 
-第一张为无额外叠加文字的场景图，后续 2–3 张展示有依据的卖点、结构/尺寸或必要提示。不含 A+，不负责供应商信息采集、自动判断可贴表面、批量套图工具台或店铺发布。
-
-## 安装
-
-需要支持 SKILL.md 的助手；制作真实图片需要图像生成/编辑工具，PSD 脚本需要 Windows 桌面版 Photoshop。Python 3 用于机械检查，不需要新增第三方 Python 包。
-
-私有仓库仅授权用户可访问。可以让 Codex 的 skill-installer 从本仓库根目录安装；也可以将整个仓库检出到个人 skills 下的 `pod-haul-listing` 目录。目标目录已存在时先比较内容，不覆盖本地改动。
-
-Windows PowerShell 示例：
+## 环境与验证
 
 ```powershell
-git clone https://github.com/AmadeusDrift/pod-haul-listing.git "$env:USERPROFILE\.codex\skills\pod-haul-listing"
+python scripts/check_environment.py
 ```
 
-安装后在下一轮使用 `$pod-haul-listing`。其他环境应放在其实际支持的 skills 目录中；不要假设本机用户名、盘符或 Photoshop 安装路径相同。
+入口用标准库定位环境，在 `local/validation-env` 按需隔离安装PyYAML/Pillow，检查PowerShell／Photoshop COM，首次运行PSD技术小样。报告 `local/environment-report.json` 给出实际解释器与shell路径；环境指纹和产物未变则缓存复用。`--check-only` 不安装或生成新PSD，`--full` 强制重测。缓存通过只说明技术链路，不证明真实商品质量。
 
-## 首次试用
+不修改Windows安全策略／注册表，不用Bypass，不安装大型应用或触碰认证。沙盒COM权限失败走宿主审批；正常桌面Photoshop已经验证可用，不误报为未安装。全程代码／接口，不使用Computer Use。
 
-填写 [产品输入表](assets/product-brief.md)，提供真实照片、示例图案及人工确认的贴图位置。
-
-```text
-使用 $pod-haul-listing，根据我提供的产品资料、参考图和已确认贴图区域，
-先制作标题、五点、产品详情及3–4张轮播图。
-我确认图文后，再制作简单PSD。
-```
-
-`assets/trial-example.json` 是虚构的机械测试示例，不可当成真实商品资料或上传文件。缺少事实时省略相关主张或列为待确认，不编造尺寸、材质、功能或注意事项。
-
-## 检查与 Photoshop
-
-在仓库根目录执行：
+下面测试用环境报告中的隔离Python运行（Windows通常为 `local/validation-env/Scripts/python.exe`）：
 
 ```powershell
-python -m unittest discover -s tests -v
-python scripts/validate.py assets/trial-example.json
-powershell -NoProfile -File scripts/photoshop.ps1 -Mode Probe
+python -X utf8 -m unittest discover -s tests -v
+python -X utf8 scripts/validate.py assets/trial-example.json
+python -X utf8 <skill-creator目录>/scripts/quick_validate.py <本仓库>
 ```
 
-机械检查成功状态仍是 `MECHANICAL_PASS_REVIEW_REQUIRED`，不表示文案语义、图片效果、权利归属或平台审核已通过。
+当前49项单元测试覆盖资料验证、环境缓存与文件交付：四套完整图、共用图、指定图位组合、重复产物复用、源路径边界和冻结哈希。单元测试不调用模型／Photoshop；真实P002模板的商品与像素验收另记交接文档。合成例子标为 `example_only`，不是上架资料。
 
-PSD 的 Build、Inspect 和单张 TrialReplace 用法见 [简单 PSD](references/simple-psd.md)。脚本不实现整套批量替换，不自动处理颜色变体或弧面透视。模板底图不能残留旧印花；新图案应使用统一画布，保持替换效果稳定。
+## 当前脚本边界
 
-## 已知验证边界
+`photoshop.ps1 Build` 只创建简单矩形智能对象；AI负责原生商品母版的蒙版、前景、透视、光影与正式文字。`TrialReplace` 可在副本保留已有模板结构，只有经过实际验证的商品／模板范围才报告支持，不宣称通用曲面能力。
 
-- 已有 7 项 Python 机械检查用例，并检查过 PowerShell/内嵌 JSX 语法。
-- 真实商品的完整图文、PSD 制作与试换尚未验收。此前本地 Photoshop COM 探测返回 `0x80080005`；安装 Photoshop 不等于自动化接口已可用。
-- 官方依据及适用范围记录在 [文案与官方依据](references/copy-and-policy.md)，页面摘要核对日期为 2026-10-20。首次用于新站点或类目时应重新核对。
-- 五点和描述的类目硬上限未知时保留待核对状态，不把编辑目标当官方限制。
-- 场景主图是用户指定的低价商城业务要求；当前未独立核实其对所有 Haul 类目的适用性，需按实际商城后台要求复核。
+`gallery_delivery.py` 只检查、预览与打包已有文件，自动补齐每套共用图；不生成场景、不替换印花、不自动决定图片好看。说明与命令见 [delivery.md](references/delivery.md)。
 
-## 文件说明
+## 安装与同步
 
-| 位置 | 用途 |
-|---|---|
-| `SKILL.md` | 助手入口和阶段约束 |
-| `assets/product-brief.md` | 人工产品资料输入表 |
-| `references/` | 官方依据、图像提示词、数据格式和简单 PSD 方法 |
-| `scripts/validate.py` | 只读检查 Listing JSON |
-| `scripts/photoshop.ps1` | Windows Photoshop 单张制作与检查 |
-| `tests/` | 机械检查回归用例 |
+仓库：[AmadeusDrift/pod-haul-listing](https://github.com/AmadeusDrift/pod-haul-listing)（private）。仓库本身可作为技能目录。更新个人已安装副本时先比较并备份，同步技能入口、agents、references、assets、scripts、tests及配套说明／许可；不复制 `.git`、`local`、`runs`、真实商品素材或凭证。仓库提交与本机安装同步分别核对，不把push成功当成安装完成。
 
-不提交产品私有资料、运行产物、凭证、PSD 成品或本机缓存。来源与 MIT 许可见 [来源说明](references/provenance.md) 和 [LICENSE](LICENSE)。
+真实产物放忽略的 `runs/` 或独立产品目录，不提交PNG、PSD、个人路径、账号信息和缓存。历史政策摘要见 [copy-and-policy.md](references/copy-and-policy.md)，执行真实商品时核实适用站点／类目的当前要求。来源及MIT许可见 [provenance.md](references/provenance.md) 与 [LICENSE](LICENSE)。

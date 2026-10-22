@@ -1,40 +1,52 @@
-# 简单 PSD：重点是可换印花
+# Photoshop 母版与固定替换
 
-## 最小结构
+## 结构由真实画面决定
 
-- `FIXED_SCENE`：定稿场景、产品和固定文案合成的画面，印花区域已去除旧图案。
-- `PRINT_ARTWORK`：嵌入式印花智能对象，固定位置、大小；需要时仅加简单裁切蒙版。
+- `FIXED_SCENE`：最初生成／准备的无印花实物和场景。正式叠加文字保留独立原生文字层。
+- `PRINT_ARTWORK`：嵌入式智能对象，统一源画布；在母版阶段设定位置、必要的摄影透视／曲面变形和区域蒙版。
+- 前景层或遮挡蒙版：用于真正跨入印花面的手指、挂带、五金等。没有交叉时不强行添加，记录依据。
+- `SURFACE_LIGHTING` 或等效处理：保留真实光影，不引入首款图案。透明印花要能露出原产品底色。
+- 主题文字：独立可编辑层；工具若只支持印花替换，就使用共用文案，或明确扩展支持后再变更主题字段。
 
-不要求分别制作背景、产品、光影、纹理层。不提供整套批量替换工具台。若斜面/弧面必须做透视，在单个智能对象上设置一次并试换验证；当前矩形构建脚本本身不自动透视。
+不要求拆分全部背景；纯通用图不必制造无用印花层。初期编辑同一母版属于设计，后续按图案重做母版属于错误路径。先完成正式排版和第一套视觉审核，再冻结SHA256。
 
-PNG 是效果参考，不是可逆的分层来源。不要在有旧印花的固定底图上叠新图（透明部分会露旧图）。产品文字和不可覆盖部分以人工标注为准。
+## 当前固定脚本能力
 
-## Windows Photoshop 脚本
-
-无需新增 Python 库或 MCP。PowerShell 通过 Photoshop COM 运行 JSX，Photoshop 自己保存原生 PSD。先探测，不用 computer use 模拟点击。
+使用环境报告中的PowerShell。下面的 `pwsh` 仅为命令示例，不硬编码用户机器路径。
 
 ```powershell
-powershell -NoProfile -File scripts/photoshop.ps1 -Mode Probe
-powershell -NoProfile -File scripts/photoshop.ps1 -Mode Build -SpecPath C:/work/psd-spec.json
-powershell -NoProfile -File scripts/photoshop.ps1 -Mode Inspect -DocumentPath C:/work/P001-01.psd
+pwsh -NoProfile -File scripts/photoshop.ps1 -Mode Probe
+pwsh -NoProfile -File scripts/photoshop.ps1 -Mode Build -SpecPath build.json
+pwsh -NoProfile -File scripts/photoshop.ps1 -Mode Inspect -DocumentPath template.psd
+pwsh -NoProfile -File scripts/photoshop.ps1 -Mode TrialReplace -SpecPath replace.json
 ```
 
-`Build` 新开自己的文档，添加固定画面和智能对象，按 region 完整等比放入，保存新 PSD；不覆盖已有文件。`Inspect` 只读打开副本并报告图层，随后关闭自己的文档。不关闭用户文档、不永久修改 Photoshop 偏好；程序临时改动在 finally 恢复。
+`Build` 仅创建无印花底图加矩形位置的智能对象，不会自动识别产品区域、创建蒙版、遮挡、透视或文字版式。复杂模板由AI通过当前受支持的原生Photoshop代码／接口构建并真实检查；不是让用户指出所有问题。不要把两层技术小样当完整产品模板。
 
-试换验证使用 `-Mode TrialReplace -SpecPath C:/work/trial-spec.json`：
+`Inspect` 检查顶层 `PRINT_ARTWORK` 的智能对象类型、图层名与边界；它自身不完整检查蒙版／变形／字体，必要时另做原生只读检查，保存证据。
+
+`TrialReplace` 在副本中用 `placedLayerReplaceContents` 替换已有智能对象，导出PNG后关闭副本，不保存模板。母版已有的蒙版、透视和前景可保留，实际可用范围由真实模板测试决定；不要因为Build仅矩形就把所有已验证商品模板一律说成不可用。也不能把单模板替换说成通用图库／随机抽样工具。
+
+替换输入：
 
 ```json
 {
-  "template_path": "C:/work/P001-01.psd",
-  "artwork_path": "C:/work/another-normalized.png",
-  "preview_path": "C:/work/P001-01-trial.png"
+  "template_path": "C:/work/templates/product-01.psd",
+  "artwork_path": "C:/work/artwork/A002-normalized.png",
+  "preview_path": "C:/work/variants/A002/01.png"
 }
 ```
 
-只是单张技术试换：不改模板，不保存替换后的 PSD，仅导出新预览并关闭副本。图案需要先规范为相同画布尺寸与留白；脚本要求候选图像素尺寸与原智能对象源尺寸一致，不把不同尺寸硬塞进去。预览已存在则停止。
+候选图必须与智能对象源画布相同尺寸。图案在同尺寸源画布内等比排布；文字／透明款留安全边距，满覆盖规则单独声明，摄影平面的变换固定在母版上。1600×1600 是本次P002的已验证选择，不强制所有产品同尺寸。
 
-## 验收
+脚本有输入和输出存在性检查，不覆盖已有输出，不关闭用户文档，不永久修改偏好。可由宿主按保存的规格顺序调用同一固定入口；调度清单不替代替换实现，不得临时重写换图算法来伪装固定工具验收。
 
-重新打开 PSD，检查 `PRINT_ARTWORK` 确实为智能对象。用不同配色/内容的同尺寸图案试换，核对位置、比例、清理后的区域、旧印花残留、文字与 PNG 导出。不只凭图层名宣称可替换。
+## 权限与故障
 
-无 Photoshop 或 COM 失败时报告原始类别和已完成部分，不安装第三方 MCP或升级软件来绕过。技术示意样例通过只能证明脚本链路，真实产品仍需单独检查。
+沙盒内COM曾报 `0x80080005 CO_E_SERVER_EXEC_FAILURE`，正常桌面权限可连接Photoshop 26.0.0。用宿主审批机制处理，不解释成未安装；冷启动保留合理等待，不并发重复启动。旧Windows PowerShell可能因执行策略拒绝脚本，使用报告里已经可执行的PowerShell 7；不改执行策略、不用Bypass、不改注册表、不安装大型应用绕过。
+
+仅关闭本次打开的工作副本，偏好在finally恢复；先从文档跟踪列表移除自己即将关闭的对象，再关闭，避免访问失效的Photoshop宿主对象。不要用恢复偏好的异常掩盖原始错误。保留原始错误和当前成果。
+
+## 验收范围
+
+按 [production-workflow.md](production-workflow.md) 记录真实蒙版、满覆盖、透明、比例、遮挡和重复导出，冻结前后哈希不变。对视觉、工具和平台分别给结论；机械通过不表示图片能卖货。P002的具体经验只放交接记录，不能把其圆形蒙版和视角泛化到其他商品。

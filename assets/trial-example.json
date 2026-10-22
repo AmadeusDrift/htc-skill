@@ -6,13 +6,36 @@
     "marketplace": "US",
     "language": "en",
     "facts": [
-      {"id": "shape", "text": "Rectangular decorative plaque with a defined border", "confirmed": true},
-      {"id": "art", "text": "Blue botanical print on the front", "confirmed": true},
-      {"id": "size", "text": "15 x 10 cm", "confirmed": true},
-      {"id": "count", "text": "One plaque; display props not included", "confirmed": true},
-      {"id": "use", "text": "Indoor decorative display", "confirmed": true}
+      {
+        "id": "shape",
+        "text": "Rectangular decorative plaque with a defined border",
+        "confirmed": true
+      },
+      {
+        "id": "art",
+        "text": "Blue botanical print on the front",
+        "confirmed": true
+      },
+      {
+        "id": "size",
+        "text": "15 x 10 cm",
+        "confirmed": true
+      },
+      {
+        "id": "count",
+        "text": "One plaque; display props not included",
+        "confirmed": true
+      },
+      {
+        "id": "use",
+        "text": "Indoor decorative display",
+        "confirmed": true
+      }
     ],
-    "print_region": {"confirmed": true, "description": "Front rectangle, leaving the border clear"}
+    "print_region": {
+      "confirmed": true,
+      "description": "Front rectangle, leaving the border clear"
+    }
   },
   "rules": {
     "title_max": 75,
@@ -33,11 +56,142 @@
       "Package contents: Includes one plaque; display props are not included"
     ],
     "description": "This rectangular plaque features blue botanical artwork for indoor decorative display. It measures 15 x 10 cm. The package includes one plaque; display props are not included.",
-    "fact_ids": ["shape", "art", "size", "count", "use"]
+    "fact_ids": [
+      "shape",
+      "art",
+      "size",
+      "count",
+      "use"
+    ]
   },
   "gallery": [
-    {"id": "01", "role": "scene", "overlay_text": [], "fact_ids": ["shape", "art", "use"]},
-    {"id": "02", "role": "benefit", "overlay_text": ["Botanical detail"], "fact_ids": ["art"]},
-    {"id": "03", "role": "structure-size", "overlay_text": ["15 x 10 cm", "One plaque included"], "fact_ids": ["size", "count"]}
-  ]
+    {
+      "id": "01",
+      "role": "scene",
+      "overlay_text": [],
+      "fact_ids": [
+        "shape",
+        "art",
+        "use"
+      ],
+      "reuse_scope": "artwork-specific",
+      "overlay_text_zh": [],
+      "buyer_question": "What does the plaque look like in a display setting?",
+      "composition": "One plaque as the focal point of an indoor scene; no additional overlay"
+    },
+    {
+      "id": "02",
+      "role": "benefit",
+      "overlay_text": [
+        "Botanical detail"
+      ],
+      "fact_ids": [
+        "art"
+      ],
+      "reuse_scope": "artwork-specific",
+      "overlay_text_zh": [
+        "植物图案细节"
+      ],
+      "buyer_question": "What botanical artwork is shown?",
+      "composition": "A readable editorial title and close product with artwork labels"
+    },
+    {
+      "id": "03",
+      "role": "structure-size",
+      "overlay_text": [
+        "15 x 10 cm",
+        "One plaque included"
+      ],
+      "fact_ids": [
+        "size",
+        "count"
+      ],
+      "reuse_scope": "same-product",
+      "overlay_text_zh": [
+        "15 × 10 厘米",
+        "包含一个装饰牌"
+      ],
+      "buyer_question": "How large is the actual plaque?",
+      "composition": "Front view with 15 x 10 cm dimension guides attached to the product edges"
+    },
+    {
+      "id": "04",
+      "role": "benefit",
+      "overlay_text": [
+        "A defined border"
+      ],
+      "overlay_text_zh": [
+        "清晰边框"
+      ],
+      "fact_ids": [
+        "shape"
+      ],
+      "reuse_scope": "replace-artwork",
+      "buyer_question": "How does the defined border frame the print?",
+      "composition": "Independent border detail view and a restrained annotation"
+    },
+    {
+      "id": "05",
+      "role": "tips",
+      "overlay_text": [
+        "For indoor decorative display"
+      ],
+      "overlay_text_zh": [
+        "用于室内装饰展示"
+      ],
+      "fact_ids": [
+        "use"
+      ],
+      "reuse_scope": "same-product",
+      "buyer_question": "Where is it intended to be displayed?",
+      "composition": "A distinct indoor shelf scene with clear text area"
+    },
+    {
+      "id": "06",
+      "role": "benefit",
+      "overlay_text": [
+        "Blue botanical artwork"
+      ],
+      "overlay_text_zh": [
+        "蓝色植物图案"
+      ],
+      "fact_ids": [
+        "art"
+      ],
+      "reuse_scope": "artwork-specific",
+      "buyer_question": "What do the printed details look like up close?",
+      "composition": "Macro view of botanical linework, using the same template content"
+    },
+    {
+      "id": "07",
+      "role": "tips",
+      "overlay_text": [
+        "One plaque included",
+        "Display props not included"
+      ],
+      "overlay_text_zh": [
+        "包含一个装饰牌",
+        "不包含展示道具"
+      ],
+      "fact_ids": [
+        "count"
+      ],
+      "reuse_scope": "same-product",
+      "buyer_question": "What is included and what is only a display prop?",
+      "composition": "Product and declared contents with a clear props-not-included caption"
+    }
+  ],
+  "validation_stage": "gallery",
+  "gallery_strategy": {
+    "buyer_profile": "Indoor decoration shoppers",
+    "core_buying_reason": "A botanical accent with a known size and defined printed border",
+    "visual_direction": "Warm indoor scene, clear native typography, distinct detail and size views"
+  },
+  "workflow": {
+    "template_state": "draft",
+    "variant_method": "smart-object-only",
+    "note": "Fictional planning record only; no real approval or template hashes",
+    "stage": "design_draft"
+  },
+  "schema_version": "0.4"
 }

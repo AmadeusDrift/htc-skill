@@ -1,4 +1,4 @@
 interface:
-  display_name: "POD 低价商城图文与 PSD"
-  short_description: "用人工确认的产品资料和贴图区域制作低价商城文案、轮播图及简洁可换印花 PSD"
-  default_prompt: "使用 $pod-haul-listing，根据我提供的产品资料、参考图和已确认贴图区域，制作标题、五点、产品详情及轮播图，定稿后制作简单 PSD。"
+  display_name: "POD 商品视觉与智能对象母版"
+  short_description: "先做好完整主图与轮播图的场景、卖点、文案和排版，定稿后只换PSD印花"
+  default_prompt: "使用 $pod-haul-listing，为这个产品先规划购买理由并完成第一套带正式文案排版的完整轮播图，审核定稿后冻结PSD，只替换智能对象输出其余印花；若已有批准母版或只要总览打包，直接复用对应成果。"

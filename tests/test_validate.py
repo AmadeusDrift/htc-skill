@@ -19,6 +19,24 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(result['errors'], [])
         self.assertEqual(result['status'], 'MECHANICAL_PASS_REVIEW_REQUIRED')
 
+    def test_seven_image_plan_is_accepted(self):
+        while len(self.data['gallery']) < 7:
+            item = copy.deepcopy(self.data['gallery'][1])
+            item['id'] = str(len(self.data['gallery']) + 1)
+            self.data['gallery'].append(item)
+        self.assertEqual(validator.validate(self.data)['errors'], [])
+
+    def test_short_gallery_is_rejected(self):
+        self.data['gallery'] = self.data['gallery'][:3]
+        self.assertTrue(any('gallery' in e for e in validator.validate(self.data)['errors']))
+
+    def test_product_info_can_be_reviewed_before_print_region_and_gallery(self):
+        self.data['validation_stage'] = 'product-info'
+        self.data['product']['print_region'] = {'confirmed': False}
+        self.data.pop('gallery')
+        self.data['listing'].pop('description')
+        self.assertEqual(validator.validate(self.data)['errors'], [])
+
     def test_scene_cover_has_no_overlay_text(self):
         self.data['gallery'][0]['overlay_text'] = ['Great gift']
         self.assertTrue(any('overlay_text' in x for x in validator.validate(self.data)['errors']))
@@ -48,6 +66,78 @@ class ValidationTests(unittest.TestCase):
         result = validator.validate(self.data)
         self.assertEqual(result['errors'], [])
         self.assertTrue(any('bullet_max' in x for x in result['warnings']))
+
+    def test_product_specific_gallery_roles_are_supported(self):
+        for item, role in zip(self.data['gallery'][1:], ['benefit', 'function', 'detail', 'size', 'scene', 'use']):
+            item['role'] = role
+        self.assertEqual(validator.validate(self.data)['errors'], [])
+
+    def test_modern_design_plan_requires_buying_reason_and_composition(self):
+        self.data['gallery_strategy'] = {'buyer_profile': 'Travelers'}
+        self.data['gallery'][1].pop('composition', None)
+        result = validator.validate(self.data)
+        self.assertTrue(any('core_buying_reason' in x for x in result['errors']))
+        self.assertTrue(any('composition' in x for x in result['errors']))
+
+    def test_frozen_templates_require_first_set_review_and_hashes(self):
+        self.data['workflow'] = {'template_state': 'frozen', 'variant_method': 'smart-object-only'}
+        errors = validator.validate(self.data)['errors']
+        self.assertTrue(any('first_set_review' in x for x in errors))
+        self.assertTrue(any('template_hashes' in x for x in errors))
+
+    def test_explicit_delegation_can_replace_intermediate_pause(self):
+        self.data['workflow'] = {
+            'template_state': 'frozen', 'variant_method': 'smart-object-only',
+            'first_set_review': {'status': 'delegated', 'evidence': 'User: do not pause', 'ai_visual_review': True},
+            'template_hashes': {'master.psd': 'a' * 64},
+        }
+        self.assertEqual(validator.validate(self.data)['errors'], [])
+
+    def test_delegation_is_not_a_fake_user_visual_approval(self):
+        self.data['workflow'] = {
+            'template_state': 'frozen', 'variant_method': 'smart-object-only',
+            'first_set_review': {'status': 'delegated', 'evidence': 'User: do not pause'},
+            'template_hashes': {'master.psd': 'a' * 64},
+        }
+        self.assertTrue(any('ai_visual_review' in x for x in validator.validate(self.data)['errors']))
+
+    def test_variant_stage_cannot_use_scene_redraw(self):
+        self.data['workflow'] = {
+            'template_state': 'frozen', 'variant_method': 'imagegen-per-variant',
+            'first_set_review': {'status': 'approved', 'evidence': 'Approved final set'},
+            'template_hashes': {'master.psd': 'a' * 64},
+        }
+        self.assertTrue(any('variant_method' in x for x in validator.validate(self.data)['errors']))
+
+    def test_delegated_visual_placement_is_separate_from_manufacturing_confirmation(self):
+        self.data['product']['print_region'] = {
+            'description': 'Visual exterior area', 'confirmed': False, 'manufacturing_confirmed': False,
+            'placement_review': {'status': 'delegated', 'evidence': 'User delegated placement'},
+        }
+        self.assertEqual(validator.validate(self.data)['errors'], [])
+
+    def test_new_schema_cannot_omit_design_strategy(self):
+        self.data['schema_version'] = '0.4'; self.data.pop('gallery_strategy')
+        self.assertTrue(any('gallery_strategy' in x for x in validator.validate(self.data)['errors']))
+
+    def test_user_requested_gallery_count_can_differ_from_seven(self):
+        self.data['images_per_set'] = 6
+        self.data['images_per_set_source'] = 'User explicitly requested six images'
+        self.data['gallery'] = self.data['gallery'][:6]
+        self.assertEqual(validator.validate(self.data)['errors'], [])
+
+    def test_changed_count_needs_user_request_record(self):
+        self.data['images_per_set'] = 6
+        self.data['gallery'] = self.data['gallery'][:6]
+        self.assertTrue(any('images_per_set_source' in x for x in validator.validate(self.data)['errors']))
+
+    def test_exported_stage_requires_a_frozen_template_state(self):
+        self.data['workflow'] = {'stage': 'variants_exported', 'template_state': 'draft'}
+        self.assertTrue(any('frozen' in x for x in validator.validate(self.data)['errors']))
+
+    def test_unknown_template_state_cannot_bypass_frozen_checks(self):
+        self.data['workflow'] = {'template_state': 'variants_exported'}
+        self.assertTrue(any('template_state' in x for x in validator.validate(self.data)['errors']))
 
 
 if __name__ == '__main__':
