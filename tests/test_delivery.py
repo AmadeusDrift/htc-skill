@@ -46,6 +46,36 @@ class DeliveryTests(unittest.TestCase):
 
     def save(self): self.manifest.write_text(json.dumps(self.data), encoding='utf-8')
 
+    def test_manifest_in_work_folder_resolves_product_root(self):
+        self.manifest = self.root / '工作资料' / 'delivery.json'
+        self.manifest.parent.mkdir()
+        self.data['project_root'] = '..'
+        self.save()
+        self.assertEqual(delivery.inspect(self.manifest)['delivered_image_count'], 28)
+        self.data['variants'][0]['images']['01'] = '../outside.png'
+        self.save()
+        with self.assertRaisesRegex(ValueError, 'escapes project'):
+            delivery.inspect(self.manifest)
+
+    def test_manifest_rejects_arbitrary_project_root(self):
+        self.data['project_root'] = '../..'
+        self.save()
+        with self.assertRaisesRegex(ValueError, 'project_root'):
+            delivery.load_manifest(self.manifest)
+
+    def test_overview_cache_stays_in_work_folder(self):
+        self.data['preview_cache_dir'] = '工作资料/预览缓存'
+        self.save()
+        output = self.root / 'A001' / '总览.jpg'
+        self.assertFalse(delivery.make_overview(self.manifest, 'A001', output)['reused'])
+        self.assertFalse(output.with_name(output.name + '.inputs.json').exists())
+        self.assertEqual(len(list((self.root / '工作资料/预览缓存').glob('*.json'))), 1)
+        self.assertTrue(delivery.make_overview(self.manifest, 'A001', output)['reused'])
+        self.data['preview_cache_dir'] = '../outside'
+        self.save()
+        with self.assertRaisesRegex(ValueError, 'escapes project'):
+            delivery.make_overview(self.manifest, 'A001', output)
+
     def test_shared_images_make_four_complete_sets(self):
         result = delivery.inspect(self.manifest)
         self.assertEqual(result['variant_count'], 4)

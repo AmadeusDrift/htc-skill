@@ -139,6 +139,47 @@ class ValidationTests(unittest.TestCase):
         self.data['workflow'] = {'template_state': 'variants_exported'}
         self.assertTrue(any('template_state' in x for x in validator.validate(self.data)['errors']))
 
+    def test_title_template_keeps_fixed_product_name_after_variable_print_phrase(self):
+        self.data['title_template'] = {'print_phrase': 'Blue Botanical', 'fixed_product_name': 'Zipper Wallet'}
+        self.data['listing']['title'] = 'Blue Botanical Zipper Wallet'
+        self.assertEqual(validator.validate(self.data)['errors'], [])
+        self.data['listing']['title'] = 'Blue Botanical Coin Purse'
+        self.assertTrue(any('title_template' in x for x in validator.validate(self.data)['errors']))
+
+    def test_title_template_requires_both_parts(self):
+        for field in ('print_phrase', 'fixed_product_name'):
+            with self.subTest(field=field):
+                self.data['title_template'] = {'print_phrase': 'Botanical', 'fixed_product_name': 'Wallet'}
+                self.data['title_template'][field] = ''
+                self.assertTrue(any('title_template' in x for x in validator.validate(self.data)['errors']))
+
+    def test_no_implicit_editorial_length_targets(self):
+        self.data['rules']['bullet_max'] = None
+        self.data['rules']['description_max'] = None
+        self.data['rules'].pop('bullet_target', None)
+        self.data['rules'].pop('description_target', None)
+        self.data['listing']['bullets'][0] = 'Feature ' + 'x' * 270
+        self.data['listing']['description'] = 'x' * 1100
+        result = validator.validate(self.data)
+        self.assertEqual(result['errors'], [])
+        self.assertFalse(any('exceeds editorial target' in x for x in result['warnings']))
+
+    def test_configured_official_field_limits_are_enforced_at_boundary(self):
+        self.data.pop('title_template', None)
+        self.data['rules']['title_max'] = 75
+        self.data['rules']['bullet_max'] = 300
+        self.data['rules']['description_max'] = 2000
+        self.data['listing']['title'] = 'x' * 75
+        self.data['listing']['bullets'][0] = 'x' * 300
+        self.data['listing']['description'] = 'x' * 2000
+        self.assertEqual(validator.validate(self.data)['errors'], [])
+        self.data['listing']['title'] += 'x'
+        self.data['listing']['bullets'][0] += 'x'
+        self.data['listing']['description'] += 'x'
+        errors = validator.validate(self.data)['errors']
+        for field in ('title_max', 'bullet_max', 'description_max'):
+            self.assertTrue(any(field in x for x in errors))
+
 
 if __name__ == '__main__':
     unittest.main()

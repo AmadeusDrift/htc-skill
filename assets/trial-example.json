@@ -9,59 +9,127 @@
       {
         "id": "shape",
         "text": "Rectangular decorative plaque with a defined border",
-        "confirmed": true
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
       },
       {
         "id": "art",
-        "text": "Blue botanical print on the front",
-        "confirmed": true
+        "text": "Blue botanical artwork; variant artwork is represented only in the title and replaceable artwork asset",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
       },
       {
         "id": "size",
-        "text": "15 x 10 cm",
-        "confirmed": true
+        "text": "Length 15 cm, height 10 cm, thickness 0.3 cm",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
       },
       {
         "id": "count",
         "text": "One plaque; display props not included",
-        "confirmed": true
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
       },
       {
         "id": "use",
         "text": "Indoor decorative display",
-        "confirmed": true
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
+      },
+      {
+        "id": "material",
+        "text": "Synthetic example only: rigid acrylic base",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
+      },
+      {
+        "id": "colors",
+        "text": "Synthetic example only: ivory and charcoal base colours are available for the same print",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
+      },
+      {
+        "id": "process1",
+        "text": "Applied before shipment",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
+      },
+      {
+        "id": "process2",
+        "text": "Flat printed design",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
+      },
+      {
+        "id": "process3",
+        "text": "Artwork follows a defined application area",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
+      },
+      {
+        "id": "process4",
+        "text": "Transparent artwork areas reveal the base colour",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
+      },
+      {
+        "id": "process5",
+        "text": "Printed detail is visible in the close-up",
+        "confirmed": true,
+        "source": "Fictional technical fixture only; not a real product confirmation"
       }
     ],
     "print_region": {
       "confirmed": true,
       "description": "Front rectangle, leaving the border clear"
+    },
+    "summary_zh": "纯虚构流程示例，不能用来承诺真实材质、尺寸、颜色或水晶贴卖点；实际工艺5点须另由用户确认。",
+    "dimensions": {
+      "length": {
+        "value": 15,
+        "unit": "cm",
+        "fact_id": "size"
+      },
+      "height": {
+        "value": 10,
+        "unit": "cm",
+        "fact_id": "size"
+      },
+      "thickness": {
+        "value": 0.3,
+        "unit": "cm",
+        "fact_id": "size"
+      }
     }
   },
   "rules": {
     "title_max": 75,
-    "title_source": "US non-media; official 2026-07-27 title policy; see references/copy-and-policy.md",
-    "bullet_max": null,
-    "description_max": null,
-    "bullet_target": 250,
-    "description_target": 1000,
-    "image_policy_status": "user_requested_pending_verification"
+    "title_source": "US non-media; official title requirements checked 2026-10-23; see references/copy-and-policy.md",
+    "bullet_max": 500,
+    "description_max": 500,
+    "image_policy_status": "user_requested_pending_verification",
+    "bullet_source": "user_txt_fallback: no applicable official product-type numeric limit confirmed; 500 characters per bullet",
+    "description_source": "user_txt_fallback: no applicable official product-type numeric limit confirmed; 500 characters for the entire description",
+    "limits_checked_at": "2026-10-23",
+    "limit_unit": "characters"
   },
   "listing": {
-    "title": "Blue Botanical Decorative Plaque for Indoor Display, 15 x 10 cm",
+    "title": "Blue Botanical Decorative Plaque",
     "bullets": [
-      "Botanical detail: Blue plant artwork decorates the front of the plaque",
-      "Rectangular shape: A defined border frames the printed design",
-      "Measured format: The plaque measures 15 x 10 cm",
-      "Indoor display: Designed as a decorative accent for indoor spaces",
-      "Package contents: Includes one plaque; display props are not included"
+      "Rectangular base: A defined border frames the front surface",
+      "Base material: This fictional example uses a rigid acrylic plaque",
+      "Dimensions: Length 15 cm; height 10 cm; thickness 0.3 cm",
+      "Intended use: A decorative accent for indoor display",
+      "Package contents: One plaque with artwork applied before shipment; display props are not included"
     ],
-    "description": "This rectangular plaque features blue botanical artwork for indoor decorative display. It measures 15 x 10 cm. The package includes one plaque; display props are not included.",
+    "description": "This rectangular decorative plaque is intended for indoor display. The rigid acrylic base measures 15 cm long, 10 cm high and 0.3 cm thick. One plaque is included, with artwork applied before shipment; display props are not included.",
     "fact_ids": [
       "shape",
-      "art",
+      "material",
       "size",
+      "use",
       "count",
-      "use"
+      "process1"
     ]
   },
   "gallery": [
@@ -69,70 +137,144 @@
       "id": "01",
       "role": "scene",
       "overlay_text": [],
+      "overlay_text_zh": [],
       "fact_ids": [
         "shape",
         "art",
+        "colors",
         "use"
       ],
-      "reuse_scope": "artwork-specific",
-      "overlay_text_zh": [],
-      "buyer_question": "What does the plaque look like in a display setting?",
-      "composition": "One plaque as the focal point of an indoor scene; no additional overlay"
+      "reuse_scope": "Same base colour and structure only; replace artwork in every visible print region",
+      "buyer_question": "What does the finished product look like in its available base colours?",
+      "composition": "Primary ivory variant 01 combines ivory and charcoal plaques with the identical botanical print; charcoal child 01 shows only charcoal",
+      "text_production": "Image generation tool renders all text and layout; Photoshop only creates artwork PSD",
+      "print_instances": [
+        {
+          "base_color": "ivory",
+          "artwork_id": "A001",
+          "smart_object": "PRINT_IVORY"
+        },
+        {
+          "base_color": "charcoal",
+          "artwork_id": "A001",
+          "smart_object": "PRINT_CHARCOAL"
+        }
+      ]
     },
     {
       "id": "02",
       "role": "benefit",
       "overlay_text": [
-        "Botanical detail"
+        "A defined border",
+        "Rigid acrylic base",
+        "For indoor display"
+      ],
+      "overlay_text_zh": [
+        "清晰边框",
+        "硬质亚克力底板",
+        "用于室内展示"
       ],
       "fact_ids": [
-        "art"
+        "shape",
+        "material",
+        "use"
       ],
-      "reuse_scope": "artwork-specific",
-      "overlay_text_zh": [
-        "植物图案细节"
-      ],
-      "buyer_question": "What botanical artwork is shown?",
-      "composition": "A readable editorial title and close product with artwork labels"
+      "reuse_scope": "Same base colour and structure only; replace artwork in every visible print region",
+      "buyer_question": "What is the product and what does the base offer?",
+      "composition": "Product identity and supported base features in a readable layout",
+      "text_production": "Image generation tool renders all text and layout; Photoshop only creates artwork PSD",
+      "content_focus": "product"
     },
     {
       "id": "03",
-      "role": "structure-size",
+      "role": "benefit",
       "overlay_text": [
-        "15 x 10 cm",
-        "One plaque included"
+        "Applied before shipment",
+        "Flat printed design",
+        "Defined application area",
+        "Base colour visible through transparent areas",
+        "Printed detail up close"
+      ],
+      "overlay_text_zh": [
+        "发货前已贴好",
+        "平面印花设计",
+        "明确的贴附区域",
+        "透明区域露出底色",
+        "近看印花细节"
       ],
       "fact_ids": [
-        "size",
-        "count"
+        "process1",
+        "process2",
+        "process3",
+        "process4",
+        "process5"
       ],
-      "reuse_scope": "same-product",
-      "overlay_text_zh": [
-        "15 × 10 厘米",
-        "包含一个装饰牌"
-      ],
-      "buyer_question": "How large is the actual plaque?",
-      "composition": "Front view with 15 x 10 cm dimension guides attached to the product edges"
+      "reuse_scope": "Same base colour and structure only; replace artwork in every visible print region",
+      "buyer_question": "What are the confirmed transfer characteristics?",
+      "composition": "One enlarged printed region plus five concise process points; all five are synthetic fixture facts, not real approved copy",
+      "text_production": "Image generation tool renders all text and layout; Photoshop only creates artwork PSD",
+      "content_focus": "transfer"
     },
     {
       "id": "04",
-      "role": "benefit",
+      "role": "detail",
       "overlay_text": [
-        "A defined border"
+        "Defined border",
+        "Slim edge"
       ],
       "overlay_text_zh": [
-        "清晰边框"
+        "清晰边框",
+        "纤薄边缘"
       ],
       "fact_ids": [
-        "shape"
+        "shape",
+        "size"
       ],
-      "reuse_scope": "replace-artwork",
-      "buyer_question": "How does the defined border frame the print?",
-      "composition": "Independent border detail view and a restrained annotation"
+      "reuse_scope": "Same base colour and structure only; replace artwork in every visible print region",
+      "buyer_question": "Which base details can I inspect?",
+      "composition": "One output image with two close-up panels and a short corresponding description in each panel",
+      "text_production": "Image generation tool renders all text and layout; Photoshop only creates artwork PSD",
+      "detail_panels": [
+        {
+          "location": "front border",
+          "description": "Defined border",
+          "fact_ids": [
+            "shape"
+          ]
+        },
+        {
+          "location": "side edge",
+          "description": "Slim edge",
+          "fact_ids": [
+            "size"
+          ]
+        }
+      ]
     },
     {
       "id": "05",
-      "role": "tips",
+      "role": "size",
+      "overlay_text": [
+        "Length 15 cm",
+        "Height 10 cm",
+        "Thickness 0.3 cm"
+      ],
+      "overlay_text_zh": [
+        "长度15厘米",
+        "高度10厘米",
+        "厚度0.3厘米"
+      ],
+      "fact_ids": [
+        "size"
+      ],
+      "reuse_scope": "Same base colour and structure only; replace artwork in every visible print region",
+      "buyer_question": "How long, high and thick is the product?",
+      "composition": "Front and side views within one image; all three dimension arrows identify the actual measurement edges",
+      "text_production": "Image generation tool renders all text and layout; Photoshop only creates artwork PSD"
+    },
+    {
+      "id": "06",
+      "role": "scene",
       "overlay_text": [
         "For indoor decorative display"
       ],
@@ -142,56 +284,72 @@
       "fact_ids": [
         "use"
       ],
-      "reuse_scope": "same-product",
-      "buyer_question": "Where is it intended to be displayed?",
-      "composition": "A distinct indoor shelf scene with clear text area"
-    },
-    {
-      "id": "06",
-      "role": "benefit",
-      "overlay_text": [
-        "Blue botanical artwork"
-      ],
-      "overlay_text_zh": [
-        "蓝色植物图案"
-      ],
-      "fact_ids": [
-        "art"
-      ],
-      "reuse_scope": "artwork-specific",
-      "buyer_question": "What do the printed details look like up close?",
-      "composition": "Macro view of botanical linework, using the same template content"
+      "reuse_scope": "Same base colour and structure only; replace artwork in every visible print region",
+      "buyer_question": "How is the finished product used?",
+      "composition": "An indoor display scene distinct from 01 with a concise generic use caption",
+      "text_production": "Image generation tool renders all text and layout; Photoshop only creates artwork PSD"
     },
     {
       "id": "07",
-      "role": "tips",
+      "role": "use",
       "overlay_text": [
-        "One plaque included",
-        "Display props not included"
+        "A closer look, in hand"
       ],
       "overlay_text_zh": [
-        "包含一个装饰牌",
-        "不包含展示道具"
+        "手持近看"
       ],
       "fact_ids": [
-        "count"
+        "shape",
+        "size",
+        "art"
       ],
-      "reuse_scope": "same-product",
-      "buyer_question": "What is included and what is only a display prop?",
-      "composition": "Product and declared contents with a clear props-not-included caption"
+      "reuse_scope": "Same base colour and structure only; replace artwork in every visible print region",
+      "buyer_question": "How large does the finished product look in hand?",
+      "composition": "One realistic hand-held view with correct scale, surface appearance and print alignment",
+      "text_production": "Image generation tool renders all text and layout; Photoshop only creates artwork PSD"
     }
   ],
   "validation_stage": "gallery",
   "gallery_strategy": {
     "buyer_profile": "Indoor decoration shoppers",
-    "core_buying_reason": "A botanical accent with a known size and defined printed border",
-    "visual_direction": "Warm indoor scene, clear native typography, distinct detail and size views"
+    "core_buying_reason": "A decorative base with a defined border, known three-dimensional size and applied artwork",
+    "visual_direction": "Warm indoor scenes; readable text and panel layout completed entirely in image generation; PS only handles replaceable artwork"
   },
   "workflow": {
     "template_state": "draft",
     "variant_method": "smart-object-only",
-    "note": "Fictional planning record only; no real approval or template hashes",
+    "note": "Fictional planning only; no real assets, approval, factory process verification or multi-object tool verification",
     "stage": "design_draft"
   },
-  "schema_version": "0.4"
+  "schema_version": "0.4",
+  "example_note": "Entirely fictional seven-image planning example; facts and process points are synthetic, not approved factory claims. No image or PSD has been generated.",
+  "title_template": {
+    "print_phrase": "Blue Botanical",
+    "fixed_product_name": "Decorative Plaque"
+  },
+  "color_variants": [
+    {
+      "id": "A001-ivory",
+      "artwork_id": "A001",
+      "base_color": "ivory",
+      "is_primary": true
+    },
+    {
+      "id": "A001-charcoal",
+      "artwork_id": "A001",
+      "base_color": "charcoal",
+      "is_primary": false
+    }
+  ],
+  "output_layout": {
+    "sku_folder": "A001-植物印花",
+    "artwork_path": "A001-植物印花/印花.png",
+    "copy_path": "A001-植物印花/文案.txt",
+    "overview_path": "A001-植物印花/总览.jpg",
+    "reference_dir": "工作参考",
+    "intermediate_dir": "工作资料/中间产物",
+    "record_dir": "工作资料",
+    "template_location": "Product root; only PSDs that replace artwork",
+    "note": "Fictional paths only; existing files are not moved"
+  }
 }

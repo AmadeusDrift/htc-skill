@@ -36,7 +36,10 @@ def _ids(items, label):
 def load_manifest(path):
     path = Path(path).resolve()
     data = json.loads(path.read_text(encoding='utf-8-sig'))
-    root = path.parent
+    project_root = data.get('project_root', '.')
+    if project_root not in ('.', '..'):
+        raise ValueError('project_root must be . or .. (manifest folder or its product parent)')
+    root = (path.parent / project_root).resolve()
     slots = _ids(data.get('slots', []), 'slot')
     expected = data.get('images_per_set', 7)
     if not isinstance(expected, int) or isinstance(expected, bool) or expected <= 0 or len(slots) != expected:
@@ -111,9 +114,10 @@ def _protected(manifest, root, data):
             *(project_path(root, t['path']) for t in data.get('templates', []))}
 
 
-def _preview(output, inputs, params, render, protected):
+def _preview(output, inputs, params, render, protected, cache_dir=None):
     output = Path(output).resolve()
-    cache = output.with_name(output.name + '.inputs.json')
+    cache = (Path(cache_dir) / (hashlib.sha256(str(output).encode('utf-8')).hexdigest() + '.json')
+             if cache_dir is not None else output.with_name(output.name + '.inputs.json'))
     if output in protected or cache in protected:
         raise ValueError('Preview output or sidecar conflicts with a project source')
     record = {'inputs': [{'path': str(path), 'sha256': sha256(path)} for path in inputs], 'params': params}
@@ -137,6 +141,7 @@ def _preview(output, inputs, params, render, protected):
     else:
         image.save(output, quality=94, subsampling=0)
     record['output_sha256'] = sha256(output)
+    cache.parent.mkdir(parents=True, exist_ok=True)
     cache.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
     return {'path': str(output), 'reused': False}
 
@@ -159,7 +164,8 @@ def make_grid(manifest, slot, output):
         return result
     return _preview(output, inputs, {'kind': 'grid', 'slot': slot, 'cols': cols,
                                     'variants': [v['id'] for v in data['variants']]},
-                    render, _protected(manifest, root, data))
+                    render, _protected(manifest, root, data),
+                    project_path(root, data['preview_cache_dir']) if data.get('preview_cache_dir') else None)
 
 
 def make_overview(manifest, variant_id, output, thumb=500):
@@ -187,7 +193,8 @@ def make_overview(manifest, variant_id, output, thumb=500):
         return result
     return _preview(output, inputs, {'kind': 'overview', 'variant': variant_id, 'thumb': thumb,
                                     'slots': [s['id'] for s in data['slots']]},
-                    render, _protected(manifest, root, data))
+                    render, _protected(manifest, root, data),
+                    project_path(root, data['preview_cache_dir']) if data.get('preview_cache_dir') else None)
 
 
 def pack(manifest, output, variant_id=None):

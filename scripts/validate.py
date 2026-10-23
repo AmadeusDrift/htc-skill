@@ -42,6 +42,16 @@ def validate(data):
     title = listing.get('title', '')
     bullets = listing.get('bullets', [])
     description = listing.get('description', '')
+    title_template = data.get('title_template')
+    if title_template is not None:
+        if not isinstance(title_template, dict):
+            errors.append('title_template must be an object')
+        else:
+            parts = [title_template.get(key) for key in ('print_phrase', 'fixed_product_name')]
+            if any(not isinstance(part, str) or not part.strip() for part in parts):
+                errors.append('title_template requires nonempty print_phrase and fixed_product_name')
+            elif title != ' '.join(part.strip() for part in parts):
+                errors.append('listing.title must match title_template: print_phrase + space + fixed_product_name')
     if not isinstance(bullets, list) or len(bullets) != 5:
         errors.append('listing.bullets must contain exactly five entries (project requirement)')
         bullets = bullets if isinstance(bullets, list) else []
@@ -60,8 +70,8 @@ def validate(data):
             errors.append(f'listing.{field}: promotional/placeholder wording')
     for key, values, target in (
         ('title_max', [title], None),
-        ('bullet_max', bullets, rules.get('bullet_target', 250)),
-        ('description_max', [description], rules.get('description_target', 1000)),
+        ('bullet_max', bullets, rules.get('bullet_target')),
+        ('description_max', [description], rules.get('description_target')),
     ):
         limit = rules.get(key)
         if limit is None:

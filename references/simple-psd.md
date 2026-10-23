@@ -2,13 +2,13 @@
 
 ## 结构由真实画面决定
 
-- `FIXED_SCENE`：最初生成／准备的无印花实物和场景。正式叠加文字保留独立原生文字层。
+- `FIXED_SCENE`：图片生成工具已完成画面、正式文字和排版的固定底图，仅产品贴附区域无旧印花；无印花不等于无文字。
 - `PRINT_ARTWORK`：嵌入式智能对象，统一源画布；在母版阶段设定位置、必要的摄影透视／曲面变形和区域蒙版。
 - 前景层或遮挡蒙版：用于真正跨入印花面的手指、挂带、五金等。没有交叉时不强行添加，记录依据。
 - `SURFACE_LIGHTING` 或等效处理：保留真实光影，不引入首款图案。透明印花要能露出原产品底色。
-- 主题文字：独立可编辑层；工具若只支持印花替换，就使用共用文案，或明确扩展支持后再变更主题字段。
+- 图片文字：全部在图片生成工具中确定、生成及修正，固化在固定底图；不要求可编辑文字层，不在PS创建、修改或排版标题、正文、细节描述、尺寸数字或引线。
 
-不要求拆分全部背景；纯通用图不必制造无用印花层。初期编辑同一母版属于设计，后续按图案重做母版属于错误路径。先完成正式排版和第一套视觉审核，再冻结SHA256。
+不要求拆分全部背景；纯通用图不必制造无用印花层。初期编辑同一母版属于设计，后续按图案重做母版属于错误路径。先在图片生成工具完成正式排版，PS只制作印花PSD，完整首套视觉审核后再冻结SHA256。
 
 ## 当前固定脚本能力
 
@@ -21,7 +21,7 @@ pwsh -NoProfile -File scripts/photoshop.ps1 -Mode Inspect -DocumentPath template
 pwsh -NoProfile -File scripts/photoshop.ps1 -Mode TrialReplace -SpecPath replace.json
 ```
 
-`Build` 仅创建无印花底图加矩形位置的智能对象，不会自动识别产品区域、创建蒙版、遮挡、透视或文字版式。复杂模板由AI通过当前受支持的原生Photoshop代码／接口构建并真实检查；不是让用户指出所有问题。不要把两层技术小样当完整产品模板。
+`Build` 仅创建无印花底图加矩形位置的智能对象，不会自动识别产品区域、创建蒙版、遮挡、透视或文字版式。复杂印花模板由AI通过当前受支持的原生Photoshop代码／接口构建并真实检查；图文版式不在PS制作。不要把两层技术小样当完整产品模板。
 
 `Inspect` 检查顶层 `PRINT_ARTWORK` 的智能对象类型、图层名与边界；它自身不完整检查蒙版／变形／字体，必要时另做原生只读检查，保存证据。
 
@@ -31,9 +31,9 @@ pwsh -NoProfile -File scripts/photoshop.ps1 -Mode TrialReplace -SpecPath replace
 
 ```json
 {
-  "template_path": "C:/work/templates/product-01.psd",
-  "artwork_path": "C:/work/artwork/A002-normalized.png",
-  "preview_path": "C:/work/variants/A002/01.png"
+  "template_path": "C:/work/01-主图.psd",
+  "artwork_path": "C:/work/A002-蝴蝶印花/印花.png",
+  "preview_path": "C:/work/A002-蝴蝶印花/01-主图.png"
 }
 ```
 
@@ -50,3 +50,13 @@ pwsh -NoProfile -File scripts/photoshop.ps1 -Mode TrialReplace -SpecPath replace
 ## 验收范围
 
 按 [production-workflow.md](production-workflow.md) 记录真实蒙版、满覆盖、透明、比例、遮挡和重复导出，冻结前后哈希不变。对视觉、工具和平台分别给结论；机械通过不表示图片能卖货。P002的具体经验只放交接记录，不能把其圆形蒙版和视角泛化到其他商品。
+
+## 多色组合与印花特写
+
+多色主图每个产品、03水晶贴局部特写等所有可见印花都须声明智能对象／区域映射，复用同一规范印花源；每个区域单独校准位置、透视、蒙版与遮挡，换款后逐一核对不漏换。正文、底板颜色、尺寸与固定构图保持不变。
+
+当前`Inspect`／`TrialReplace`仅针对顶层`PRINT_ARTWORK`单对象，不会自动遍历其他对象或联动全部副本。多对象模板必须使用实际支持全部声明对象的固定替换入口并验证，尚无此能力时标记该模板换图待支持，不用单对象成功冒充整图完成；本次流程更新不新增通用多对象替换工具。弧边不做跨边满印，贴附范围以已确认的平整区域为准。
+
+## PSD保存位置
+
+仅需要换印花的PSD存产品根目录，按图位命名，不建共用模板／templates一级目录，不按SKU复制母版。单印花源存对应SKU的印花.png，实际导出直接写对应SKU。TrialReplace当前导出PNG，示例沿用.png，不改扩展名冒充JPG；需要JPG时另按明确导出规格处理。固定底图和测试临时文件集中放工作资料/中间产物，记录相对路径，不改既有模板。

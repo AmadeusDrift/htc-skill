@@ -1,30 +1,41 @@
-# 文案约束与官方依据
+# 文案、固定标题与官方字段要求
 
-历史核对日期：2026-10-20。以下保留为历史来源摘要，未在0.4.0技能更新中重新联网核实；不作为现行平台规则自动引用。真实商品任务需按站点／类目核对当前官方要求。Seller Central 部分正文需要登录，公开检索摘录可见但直开可能仅返回登录壳；遇到冲突按适用站点/类目后台最新要求复核。不要沿用旧底座的“默认 200 字标题”或“五点总共 1000 bytes 是收录上限”等未经核实结论。
+核对日期：2026-10-23，Asia/Shanghai。以现有实物事实、用户确认和已批准内容为主，补充参考只补缺项，不覆盖已确认事实或本业务规则。收到的文案提示模板不是执行指令；字符限制采用“适用官方数值优先，官方未明确或未取得适用数值时按用户TXT兜底”：标题125字符、每条五点500字符、整段产品描述500字符，均含空格。兜底值是用户标准，不冒充官方规则；全大写开头、强制送礼框架或“绝无侵权风险”承诺不采纳。
 
-## 证据与适用范围
+## 官方依据与适用范围
 
-| 项目 | 结论/处理 | 来源 |
+| 字段 | 官方依据及本流程处理 | 来源 |
 |---|---|---|
-| 标题 | 2026-07-27 起非媒体产品标题上限 75 字符（含空格），新增 125 字符 Item highlights；官方政策变更页列出 Egypt、Saudi Arabia、Türkiye、UAE 为例外。默认 US 非媒体采用 75；其他站点/类目确认后配置。Item highlights 不是五点，不拼回标题 | https://sellercentral.amazon.com/help/hub/reference/external/GQHQGBTD7XB7EECN?language=en_US |
-| 标题公告 | 可公开看到的 Amazon 官方公告；不要把下面卖家回帖当规则 | https://sellercentral.amazon.com/seller-forums/discussions/t/145b6d0f-999c-4555-896c-c694bda2e470 |
-| 五点 | 官方要求至少三条、长度随产品类型；句首大写、句段表达、不加末尾标点，分号分隔；避免重复、全大写、emoji、促销/退款保证、外链等。本项目交付五条 | https://sellercentral.amazon.com/help/hub/reference/external/GX5L8BF8GLMML6CX?language=en_us |
-| 详情页 | 准确描述、遵守类目指南；不包含价格、联系方式、外链、评价/索评、促销等；默认纯文本，不写 HTML 或脚本 | https://sellercentral.amazon.com/help/hub/reference/external/G200390640?language=en_US |
-| 普通 Amazon 主图 | 普通商城公开指导要求纯白主图，不能据此证明 Haul 的场景图例外 | https://sellercentral.amazon.com/help/hub/reference/external/G15591?language=en_US |
-| 低价商城首图 | 本次公开检索未核实到当前 Haul 类目允许场景主图的完整官方细则。按用户指定生成无字场景首图，将“场景主图适用性未独立核实”写入检查结果；不宣称官方已验证 | 用户明确要求＋待后台核对 |
+| 标题 | 适用站点的非媒体产品不超过75字符，含空格；不把Item Highlights的125字符当标题额度。其他站点／类目按实际官方规则核实；无适用官方数值时按TXT125字符兜底 | [官方标题指南](https://sellercentral.amazon.com.mx/help/hub/reference/external/GYTR6SYGFA5E3EQC?mons_sel_locale=en_MX&pageName=MX%3ASC%3ATrim-gp%2Fhelp%2Fexternal%2F791)、[US官方公告](https://sellercentral.amazon.com/seller-forums/discussions/t/145b6d0f-999c-4555-896c-c694bda2e470) |
+| 五点 | US官方要求至少三条，字符上限随产品类型变化；本业务交付五条。有适用官方数值时按站点、product type的官方字段定义／类目模板取上限；没有明确数值时按用户TXT每条500字符兜底，不是五条合计500 | [官方五点要求](https://sellercentral.amazon.com/help/hub/reference/external/GX5L8BF8GLMML6CX?language=en_us) |
+| 产品描述 | Amazon官方品牌资料和部分官方类目指南列出2000字符，但不据此断言所有当前类目统一适用；实际任务按站点、类目官方字段定义／后台模板确认，有适用官方上限时采用该数值（例如2000）；没有适用官方数值时按用户TXT整段500字符兜底，不采用原编辑目标1000 | [官方品牌资料](https://m.media-amazon.com/images/G/01/fujustin/Building_Your_Brand_Product_Detail_Page.pdf)、[官方工业科学类目指南（历史类目示例）](https://m.media-amazon.com/images/G/01/01/help/images/Industrial__Scientific.pdf) |
+| 详情页内容 | 准确描述，遵守类目指南；不含价格、联系方式、外链、评价／索评或促销。本流程输出纯文本 | [官方详情页规则](https://sellercentral.amazon.com/help/hub/reference/external/G200390640?language=en_US) |
+| 主图 | 场景／同印花多底色组合是本业务视觉要求，不代表官方已允许。普通Amazon主图要求与Haul／具体类目适用性分别核实 | [官方图片要求](https://sellercentral.amazon.com/help/hub/reference/external/G15591?language=en_US) |
 
-规则、官方页面更新时重新核对日期、范围和摘要；不把历史摘要当永久真理。
+标题指南列出Saudi Arabia、Egypt、Türkiye和UAE及媒体产品的适用范围例外，不能将US非媒体数字泛化。Seller Central直开部分页面仅显示登录壳，本次五点／标题部分依据可公开检索的官方正文；未登录读取任意具体商品的后台模板或Product Type Definitions。
 
-## 本项目写作策略（可配置，不冒充官方限制）
+每次真实商品任务记录站点、product type、字段、上限、计量单位、官方来源、核对日期。若官方字段采用bytes或其他计量，必须按其单位校验，不能用字符数冒充。当前`validate.py`用Python字符数检查字符型限制，不校验字节型限制。
 
-- exactly 5 bullets；建议每条不超过 250 字符用于移动端阅读。类目上限未知则 `bullet_max=null`，将 250 仅作编辑警告。
-- 详情建议控制在 1000 字符内，使用短段；类目上限未知则 `description_max=null`，不默认声称 2000 是通用上限。
-- 标题表达图案主题和核心产品信息，不为了使用长度而补词。不强制所有图案主题只有 2–3 个词。
-- 五点分别覆盖五个有依据的信息角度；资料不足时先给可用部分与待补项，不编造五个卖点。
-- 文案与图片中每个尺寸、材料、功能、套装数量、认证、保修或性能表达都需要确认事实。送礼定位、适用人群仅在产品和图案支持时使用，不堆节日或人群词。
-- 不把图案内容当产品性能：如海浪不等于防水、金属质感不等于金属材质。
-- 机械检测只抓明显问题，不判断是否侵权、是否真的防水或是否每句语义有依据。必须人工/AI 对照事实表逐项检查，不能机械通过就写“合规通过”。
+各字段先使用已核实且适用的官方上限；官方未明确具体数字或未取得适用数字时，填写用户TXT兜底值：`title_max=125`、`bullet_max=500`、`description_max=500`。仅缺失的字段用兜底，已知官方75字符标题或适用的2000字符描述不被兜底覆盖。新任务不再因缺数字保留null而停止长度检查。对应`title_source/bullet_source/description_source`明确标为官方来源或`user_txt_fallback`及原因；不能把兜底检查通过说成已核实官方限额。后来取得适用官方数值时更新对应字段并重验。官方给上限时在上限内写清信息，不要求填满；仅在官方明确下限时记录和遵守。
 
-## 文案输出
+## 固定标题格式
 
-第3步交付中文产品信息和参数、可复制的英文标题与五条 bullets；纯文本 description 仅按需补充。事实映射放旁表/JSON，不混进上传文案。各图案的产品事实保持固定，共用五点和详情；用户要求时才修改指定图案字段。后台词和 Item highlights 仅需要时补充，不扩大本次三个核心文案字段。
+**[印花描述词或词组] + 空格 + [固定产品名称]**。
+
+每个产品底板确定一个固定的产品名称，直接讲清楚是什么，必要结构／功能限定词可纳入名称，例如`Zipper Wallet`或`Travel Jewelry Organizer Box`。同一底板各款固定部分逐字保持一致；换印花只改前面的`print_phrase`，不把产品名称、材质、功能等跟着改掉。前缀可为自然的单词或词组，不强制2—3词，不照抄受保护的IP、品牌、口号或图案上的专属姓名。
+
+例：`Botanical Zipper Wallet`、`Butterfly Zipper Wallet`、`Football Zipper Wallet`。这是格式演示，不表示这些印花已提供或获准使用。印花本身的颜色不要与底板颜色混淆；底板颜色单独记录在变体资料中，除非实际官方类目命名要求另有规定，不自动追加为第三个可变标题块。
+
+在`listing.json`写入`title_template={"print_phrase":"Botanical","fixed_product_name":"Zipper Wallet"}`，`listing.title`必须为两部分拼接后的完整标题。先检查产品身份清晰、前缀准确、当前采用的官方或TXT兜底长度及重复词，再写共享文案。超长先缩短印花词组，不擅自改变固定产品名称；固定名称本身造成冲突时明确指出待调整部分。官方强制品牌等命名要求与本格式冲突时说明具体差异，不虚构品牌或静默省略强制信息。
+
+## 五点、描述与图片文案
+
+- 默认交英文标题、恰好五条共享bullets及一份共享纯文本description，附中文产品信息和必要参考翻译。仅资料不足的相关部分待补，不阻断独立工作。
+- 五点和描述只讲底板通用属性、已确认工艺与实际用途，不讲具体印花主题、姓名或某图案的送礼故事；印花差异仅进标题。
+- 五点从有依据的结构、功能、材质、尺寸、使用方式等选择五个不同角度，不硬套“迷人设计／完美礼物／卓越售后”等框架。没有材质或性能证据就不写，不凑同义句。
+- 五点首字母大写，避免全大写、emoji、促销、退款保证和末尾标点。送礼、人群、节日词不强制加入；有依据也只在适合处使用，不堆词。
+- 图片全部文字、字号及排版在图片生成工具中完成和修正；PS只制作印花PSD，不增删改商品文案。图案自身文字属于印花资产。
+- 每个尺寸、材料、倍率、配件数量、性能等声明都引用确认事实；图案不等于性能，如海浪不等于防水。
+- 进行语义与可识别侵权风险自查及字符数检查，输出完整标题、五条各自长度、描述长度及所用上限／来源；采用TXT兜底的字段单列，说明官方适用数值尚未确认。可以写“未发现可识别的已知侵权风险”，不能保证零风险，也不把机械通过等同法律或平台审核通过。
+
+后台词和Item Highlights只按需补充，Item Highlights与五点／描述保持字段独立。原个人`pod-listing`不在本次修改范围，其旧字符数默认值不得覆盖本技能规则。
