@@ -1,6 +1,6 @@
 # POD 商品视觉与智能对象母版
 
-版本 **0.6.0**。用于实物截图／参考资料／印花到商品图文、完整轮播图和可替换PSD；核心是先做好第一套视觉，再冻结母版换印花。不是店铺发布、选品搜索或独立制作工作台。
+版本 **0.8.3**。用于实物截图／参考资料／印花到商品图文、完整轮播图和可替换PSD；核心是先做好第一套视觉，再冻结母版换印花。不是店铺发布、选品搜索或独立制作工作台。
 
 ## 使用
 
@@ -11,6 +11,14 @@
 用户说“不要再改”即只输出；“四套”默认四款各七图，共28张，通用图分别补齐。只要总览、指定图位四宫格或打包，直接组合现有成图，不调用imagegen。七图职责固定为场景主图、产品卖点及功能、水晶贴卖点、产品细节、长高厚尺寸、使用场景、手持质感；构图按产品适配。多底色主图同一印花多色展示，其他颜色子体单产品；复杂细节图多宫格逐格配短说明但只占一张。仓库贴标，不增加DIY指引、粘贴示意图或教程视频。已有图片与PSD不动。
 
 入口：[SKILL.md](SKILL.md)。视觉：[gallery-prompts.md](references/gallery-prompts.md)。生产：[production-workflow.md](references/production-workflow.md)。PSD：[simple-psd.md](references/simple-psd.md)。交付：[delivery.md](references/delivery.md)。数据：[data-contract.md](references/data-contract.md)。当前交接：[HANDOFF.md](HANDOFF.md)。
+
+## 03的固定文案与灵活排版
+
+标题为 `UV DTF Transfer`；五点依次为 `3D effect`、`Waterproof`、`Highly adhesive`、`High quality`、`Easy to use`，原文见[固定文案](assets/uv-dtf-copy.json)。这些卖点针对转印贴，不扩张成整个商品的性能承诺。
+
+新制或明确要求优化03时，排版按产品形态、印花焦点与留白自由适配，不固定左右分栏、产品站位或文字范围；标题克制、正文手机可读。仅换印花／仅改文案时保护对应批准构图。仍先生成无印花底板与正式图文，再由PSD贴入印花。哑光／亮面对比页和小窗目前暂停。
+
+尺寸图保留适用的简短标题，三维标尺同时标厘米和英寸，不加重复尺寸汇总或维度英文名；合并预览优先压缩JPG，高清单图保留。
 
 ## 文件组织
 
@@ -46,12 +54,16 @@ python -X utf8 <skill-creator目录>/scripts/quick_validate.py <本仓库>
 
 仓库：[AmadeusDrift/pod-haul-listing](https://github.com/AmadeusDrift/pod-haul-listing)（private）。仓库本身可作为技能目录。更新个人已安装副本时先比较并备份，同步技能入口、agents、references、assets、scripts、tests及配套说明／许可；不复制 `.git`、`local`、`runs`、真实商品素材或凭证。仓库提交与本机安装同步分别核对，不把push成功当成安装完成。
 
-真实产物放忽略的 `runs/` 或独立产品目录，不提交PNG、PSD、个人路径、账号信息和缓存。历史政策摘要见 [copy-and-policy.md](references/copy-and-policy.md)，执行真实商品时核实适用站点／类目的当前要求。来源及MIT许可见 [provenance.md](references/provenance.md) 与 [LICENSE](LICENSE)。
+真实商品产物放忽略的 `runs/` 或独立产品目录，不提交商品成图、PSD、个人路径、账号信息和缓存。技能明确引用的两张通用构图示例随 `assets/visual-references/` 发布，只作为布局／质感参考。历史政策摘要见 [copy-and-policy.md](references/copy-and-policy.md)，执行真实商品时核实适用站点／类目的当前要求。来源及MIT许可见 [provenance.md](references/provenance.md) 与 [LICENSE](LICENSE)。
 
 ## 0.5.0 历史验证
 
 本次修改流程说明、示例和标题拼接校验，运行相关`test_validate.py`共26项通过；虚构七图示例校验无错误，官方五点／描述上限未按具体product type核实的项仍明确警告。未重跑环境／交付测试，未调用图片生成或Photoshop，不把文档更新说成真实商品验收。当前全部测试数量与历史49项不同，具体以本次验证记录为准。
 
-## 0.6.0 本次验证
+## 0.6.0 历史验证
 
 相关交付测试20项、文案校验26项均通过，共46项；覆盖工作资料中的清单定位、集中预览缓存、路径越界拒绝及原有交付行为。未执行无关环境测试，未调用生成工具／Photoshop，不移动已有商品素材。
+
+## 0.8.3 发布验证
+
+交付21项与文案校验26项，共47项针对性单测通过；固定文案、技能frontmatter／版本、32个本地链接及改动脚本语法检查通过。本轮未生成图片或重跑真实Photoshop成图，已有商品测试范围见HANDOFF。PyYAML未安装，未运行依赖它的quick_validate.py；未安装新依赖。

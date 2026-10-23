@@ -105,9 +105,9 @@ function runPodJob(spec, mode) {
         app.activeDocument = copy;
         return copy;
     }
-    function findPrint(doc) {
-        var result = doc.artLayers.getByName('PRINT_ARTWORK');
-        if (result.kind !== LayerKind.SMARTOBJECT) throw new Error('PRINT_ARTWORK is not a smart object');
+    function findPrint(doc, name) {
+        var result = doc.artLayers.getByName(name || 'PRINT_ARTWORK');
+        if (result.kind !== LayerKind.SMARTOBJECT) throw new Error(result.name + ' is not a smart object');
         return result;
     }
     var oldDialogs = app.displayDialogs;
@@ -145,31 +145,49 @@ function runPodJob(spec, mode) {
         app.activeDocument = doc;
         var print = findPrint(doc);
         if (mode === 'Inspect') {
-            var names = [];
-            for (var i = 0; i < doc.layers.length; i++) names.push(doc.layers[i].name);
-            return encode({status:'PSD_INSPECTED', layers:names, smartObject:true, width:doc.width.as('px'), height:doc.height.as('px'), bounds:bounds(print)});
+            var names = [], instances = [];
+            for (var i = 0; i < doc.layers.length; i++) {
+                names.push(doc.layers[i].name);
+                if (/^PRINT_ARTWORK(?:_|$)/.test(doc.layers[i].name)) {
+                    var item = findPrint(doc, doc.layers[i].name);
+                    instances.push({name:item.name, smartObject:true, bounds:bounds(item)});
+                }
+            }
+            return encode({status:'PSD_INSPECTED', layers:names, instances:instances, smartObject:true, width:doc.width.as('px'), height:doc.height.as('px'), bounds:bounds(print)});
         }
         // Reject mismatched source canvases instead of silently moving/scaling artwork.
         var existingArt = openExisting(spec.artwork_path);
         var candidate = existingArt || app.open(file(spec.artwork_path));
         var candidateWidth = candidate.width.as('px'), candidateHeight = candidate.height.as('px');
         if (!existingArt) candidate.close(SaveOptions.DONOTSAVECHANGES);
-        app.activeDocument = doc; doc.activeLayer = print;
-        executeAction(stringIDToTypeID('placedLayerEditContents'), undefined, DialogModes.NO);
-        temp = app.activeDocument;
-        var originalWidth = temp.width.as('px'), originalHeight = temp.height.as('px');
-        temp.close(SaveOptions.DONOTSAVECHANGES); temp = null;
-        app.activeDocument = doc; doc.activeLayer = print;
-        if (candidateWidth !== originalWidth || candidateHeight !== originalHeight) {
-            throw new Error('Normalize replacement artwork to the same source canvas dimensions first');
+        var layerNames = spec.print_layer_names || ['PRINT_ARTWORK'];
+        if (!(layerNames instanceof Array) || !layerNames.length) throw new Error('print_layer_names must be a nonempty array');
+        var seen = {}, targets = [], replacements = [];
+        for (var n = 0; n < layerNames.length; n++) {
+            if (typeof layerNames[n] !== 'string' || !layerNames[n] || seen[layerNames[n]]) throw new Error('Print layer names must be unique nonempty strings');
+            seen[layerNames[n]] = true;
+            targets.push(findPrint(doc, layerNames[n]));
         }
-        var before = bounds(print);
-        var replace = new ActionDescriptor();
-        replace.putPath(charIDToTypeID('null'), file(spec.artwork_path));
-        executeAction(stringIDToTypeID('placedLayerReplaceContents'), replace, DialogModes.NO);
-        var after = bounds(print);
+        for (var n = 0; n < targets.length; n++) {
+            print = targets[n];
+            app.activeDocument = doc; doc.activeLayer = print;
+            executeAction(stringIDToTypeID('placedLayerEditContents'), undefined, DialogModes.NO);
+            temp = app.activeDocument;
+            var originalWidth = temp.width.as('px'), originalHeight = temp.height.as('px');
+            temp.close(SaveOptions.DONOTSAVECHANGES); temp = null;
+            app.activeDocument = doc; doc.activeLayer = print;
+            if (candidateWidth !== originalWidth || candidateHeight !== originalHeight) {
+                throw new Error('Normalize replacement artwork to the same source canvas dimensions first');
+            }
+            var before = bounds(print);
+            var replace = new ActionDescriptor();
+            replace.putPath(charIDToTypeID('null'), file(spec.artwork_path));
+            executeAction(stringIDToTypeID('placedLayerReplaceContents'), replace, DialogModes.NO);
+            var after = bounds(print);
+            replacements.push({name:print.name, before:before, after:after});
+        }
         doc.saveAs(newFile(spec.preview_path), new PNGSaveOptions(), true, Extension.LOWERCASE);
-        return encode({status:'TRIAL_PREVIEW_EXPORTED', path:spec.preview_path, before:before, after:after, templateUnchanged:true});
+        return encode({status:'TRIAL_PREVIEW_EXPORTED', path:spec.preview_path, before:replacements[0].before, after:replacements[0].after, replacements:replacements, templateUnchanged:true});
     } finally {
         if (temp) temp.close(SaveOptions.DONOTSAVECHANGES);
         if (doc) doc.close(SaveOptions.DONOTSAVECHANGES);

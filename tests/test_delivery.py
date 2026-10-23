@@ -125,6 +125,23 @@ class DeliveryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'overwrite'):
             delivery.make_grid(self.manifest, '07', output)
 
+    def test_large_grid_is_a_compact_jpeg_and_keeps_sources(self):
+        self.data['canvas'] = [1200, 1200]
+        source_bytes = {}
+        for variant in self.data['variants']:
+            path = self.root / variant['images']['07']
+            Image.effect_noise((1200, 1200), 75).convert('RGB').save(path)
+            source_bytes[path] = path.read_bytes()
+        self.save()
+        output = self.root / 'compact-grid.jpg'
+        delivery.make_grid(self.manifest, '07', output)
+        with Image.open(output) as grid:
+            self.assertLessEqual(max(grid.size), 2000)
+            self.assertEqual(grid.format, 'JPEG')
+        self.assertLessEqual(output.stat().st_size, 2 * 1024 * 1024)
+        for path, original in source_bytes.items():
+            self.assertEqual(path.read_bytes(), original)
+
     def test_pack_includes_shared_images_in_each_complete_set_and_reuses(self):
         output = self.root / 'sets.zip'
         delivery.pack(self.manifest, output)

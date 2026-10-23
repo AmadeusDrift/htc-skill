@@ -1,6 +1,7 @@
 """Inspect, preview and package existing gallery images; never generate or replace artwork."""
 import argparse
 import hashlib
+import io
 import json
 import math
 from pathlib import Path
@@ -138,6 +139,21 @@ def _preview(output, inputs, params, render, protected, cache_dir=None):
     image = render()
     if output.suffix.lower() == '.png':
         image.save(output)
+    elif params.get('kind') == 'grid':
+        # A grid is a shareable preview, not four original-resolution exports.
+        quality = 85
+        while True:
+            encoded = io.BytesIO()
+            image.save(encoded, format='JPEG', quality=quality, subsampling=0, optimize=True)
+            payload = encoded.getvalue()
+            if len(payload) <= 2 * 1024 * 1024:
+                output.write_bytes(payload)
+                break
+            if quality > 65:
+                quality -= 5
+            else:
+                image = image.resize((max(1, round(image.width * .85)),
+                                      max(1, round(image.height * .85))), Image.Resampling.LANCZOS)
     else:
         image.save(output, quality=94, subsampling=0)
     record['output_sha256'] = sha256(output)
@@ -157,12 +173,16 @@ def make_grid(manifest, slot, output):
     cols = math.ceil(math.sqrt(len(images)))
     rows = math.ceil(len(images) / cols)
     width, height = data['canvas']
+    factor = min(1, 1000 / max(width, height))
+    width, height = max(1, round(width * factor)), max(1, round(height * factor))
     def render():
         result = Image.new('RGB', (cols * width, rows * height), 'white')
         for n, image in enumerate(images):
-            result.paste(image, ((n % cols) * width, (n // cols) * height))
+            preview = image.resize((width, height), Image.Resampling.LANCZOS)
+            result.paste(preview, ((n % cols) * width, (n // cols) * height))
         return result
     return _preview(output, inputs, {'kind': 'grid', 'slot': slot, 'cols': cols,
+                                    'cell_size': [width, height], 'jpeg_quality': 85, 'max_bytes': 2 * 1024 * 1024,
                                     'variants': [v['id'] for v in data['variants']]},
                     render, _protected(manifest, root, data),
                     project_path(root, data['preview_cache_dir']) if data.get('preview_cache_dir') else None)
