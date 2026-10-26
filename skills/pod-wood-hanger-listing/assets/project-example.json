@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0",
+  "product_type": "wood-hanger",
+  "sets": [
+    {
+      "id": "three-sizes",
+      "sizes_cm": [
+        [
+          20,
+          30
+        ],
+        [
+          30,
+          45
+        ],
+        [
+          40,
+          60
+        ]
+      ],
+      "gallery": [
+        {
+          "id": "01",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "three-sizes-01.psd"
+        },
+        {
+          "id": "02",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "three-sizes-02.psd"
+        },
+        {
+          "id": "03",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "three-sizes-03.psd"
+        },
+        {
+          "id": "04",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "three-sizes-04.psd"
+        },
+        {
+          "id": "05",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK_1",
+              "region_description": "20×30cm规格的实际可印画面"
+            },
+            {
+              "layer_name": "PRINT_ARTWORK_2",
+              "region_description": "30×45cm规格的实际可印画面"
+            },
+            {
+              "layer_name": "PRINT_ARTWORK_3",
+              "region_description": "40×60cm规格的实际可印画面"
+            }
+          ],
+          "psd_path": "three-sizes-05.psd"
+        },
+        {
+          "id": "06",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "three-sizes-06.psd"
+        },
+        {
+          "id": "07",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "three-sizes-07.psd"
+        },
+        {
+          "id": "08",
+          "contains_sku_artwork": false,
+          "print_instances": [],
+          "psd_path": null
+        }
+      ],
+      "listing": {
+        "title_template": {
+          "print_phrase": "Botanical",
+          "fixed_product_name": "Canvas Wall Hanging with Wooden Hangers"
+        },
+        "title": "Botanical Canvas Wall Hanging with Wooden Hangers",
+        "bullets": [
+          "Canvas material",
+          "Confirmed size options",
+          "Printed surface",
+          "Wall display",
+          "Artwork format"
+        ],
+        "description": "Plan example only. Write final copy from confirmed product facts and the selected artwork.",
+        "rules": {
+          "title_max": 125,
+          "bullet_max": 500,
+          "description_max": 500,
+          "title_source": "user_txt_fallback",
+          "bullet_source": "user_txt_fallback",
+          "description_source": "user_txt_fallback",
+          "limit_unit": "characters"
+        }
+      },
+      "variants": [
+        {
+          "id": "A001",
+          "artwork_path": "A001/印花.png",
+          "copy_path": "A001/文案.txt",
+          "overview_path": "A001/总览.jpg",
+          "images": {
+            "01": "A001/01.png",
+            "02": "A001/02.png",
+            "03": "A001/03.png",
+            "04": "A001/04.png",
+            "05": "A001/05.png",
+            "06": "A001/06.png",
+            "07": "A001/07.png",
+            "08": "A001/08.png"
+          },
+          "listing": {
+            "print_phrase": "Botanical",
+            "title": "Botanical Canvas Wall Hanging with Wooden Hangers"
+          }
+        }
+      ],
+      "workflow": {
+        "template_state": "draft"
+      }
+    }
+  ]
+}

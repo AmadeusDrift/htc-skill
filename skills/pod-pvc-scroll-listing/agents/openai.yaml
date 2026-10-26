@@ -1,0 +1,6 @@
+interface:
+  display_name: "POD PVC挂轴画Listing"
+  short_description: "制作PVC挂轴画三规格合一的七张基础图、额外油画布说明及可替换印花PSD"
+  default_prompt: "使用 $pod-pvc-scroll-listing，根据产品资料和印花制作完整商品图文及可替换印花PSD。"
+policy:
+  allow_implicit_invocation: true

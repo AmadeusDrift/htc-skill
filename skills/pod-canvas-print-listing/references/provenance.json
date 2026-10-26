@@ -1,0 +1,12 @@
+{
+  "source": "https://github.com/AmadeusDrift/pod-haul-listing",
+  "source_version": "0.9.0",
+  "created": "2026-10-25",
+  "copied_scripts": {
+    "photoshop.ps1": "9f5553a3e95ca5ac3e4094a2cf69bc783e713ee1cd1b47bee909d22c7511bfca",
+    "psd_smoke.py": "7255e5d95940a436fc5268da9bc0021998cc79fd063eb3b8884aadff3e6abdee",
+    "check_environment.py": "b2f2a381742cb7c7c5cb9c6b7fce1ef37de55b06e9bfbb864fd72a4d9a0fa77e",
+    "gallery_delivery.py": "7b9cda3c4b8dfb689dc91cc0d5c7c35701f9466eb311f717e4255cc3e0b78230"
+  },
+  "scope": "Skills and reusable helpers only; no product images or production PSDs certified"
+}

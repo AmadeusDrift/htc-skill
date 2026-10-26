@@ -1,0 +1,39 @@
+{
+  "product_type": "pvc-scroll",
+  "fixed_product_name": "Canvas Wall Hanging with PVC Hangers",
+  "images_per_set": 8,
+  "sets": [
+    {
+      "id": "three-sizes",
+      "sizes_cm": [
+        [
+          20,
+          30
+        ],
+        [
+          30,
+          45
+        ],
+        [
+          40,
+          60
+        ]
+      ]
+    }
+  ],
+  "version": "1.0.0",
+  "confirmation_date": "2026-10-25",
+  "authority": "User confirmed final scope in this conversation",
+  "material": {
+    "print_surface": "canvas",
+    "hanger": "PVC"
+  },
+  "approved_canvas_claims": [
+    "scratch-resistant surface",
+    "water and moisture resistance",
+    "vibrant colors"
+  ],
+  "included_accessories": "Use corresponding supplier screenshot evidence; unresolved details remain unknown",
+  "psd_contract": "fixed scene/text; editable print smart objects; all visible instances synchronized",
+  "source_skill_version": "pod-haul-listing 0.9.0"
+}

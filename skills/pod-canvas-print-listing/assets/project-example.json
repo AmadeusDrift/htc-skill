@@ -1,0 +1,278 @@
+{
+  "schema_version": "1.0",
+  "product_type": "canvas-print",
+  "sets": [
+    {
+      "id": "60x30",
+      "sizes_cm": [
+        [
+          60,
+          30
+        ]
+      ],
+      "gallery": [
+        {
+          "id": "01",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "60x30-01.psd"
+        },
+        {
+          "id": "02",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "60x30-02.psd"
+        },
+        {
+          "id": "03",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "60x30-03.psd"
+        },
+        {
+          "id": "04",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "60x30-04.psd"
+        },
+        {
+          "id": "05",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "60x30-05.psd"
+        },
+        {
+          "id": "06",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "60x30-06.psd"
+        },
+        {
+          "id": "07",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "60x30-07.psd"
+        }
+      ],
+      "listing": {
+        "title_template": {
+          "print_phrase": "Botanical",
+          "fixed_product_name": "Unframed Canvas Print"
+        },
+        "title": "Botanical Unframed Canvas Print",
+        "bullets": [
+          "Canvas material",
+          "Confirmed size options",
+          "Printed surface",
+          "Wall display",
+          "Artwork format"
+        ],
+        "description": "Plan example only. Write final copy from confirmed product facts and the selected artwork.",
+        "rules": {
+          "title_max": 125,
+          "bullet_max": 500,
+          "description_max": 500,
+          "title_source": "user_txt_fallback",
+          "bullet_source": "user_txt_fallback",
+          "description_source": "user_txt_fallback",
+          "limit_unit": "characters"
+        }
+      },
+      "variants": [
+        {
+          "id": "A001",
+          "artwork_path": "A001/60x30/印花.png",
+          "copy_path": "A001/60x30/文案.txt",
+          "overview_path": "A001/60x30/总览.jpg",
+          "images": {
+            "01": "A001/60x30/01.png",
+            "02": "A001/60x30/02.png",
+            "03": "A001/60x30/03.png",
+            "04": "A001/60x30/04.png",
+            "05": "A001/60x30/05.png",
+            "06": "A001/60x30/06.png",
+            "07": "A001/60x30/07.png"
+          },
+          "listing": {
+            "print_phrase": "Botanical",
+            "title": "Botanical Unframed Canvas Print"
+          }
+        }
+      ],
+      "workflow": {
+        "template_state": "draft"
+      }
+    },
+    {
+      "id": "100x38",
+      "sizes_cm": [
+        [
+          100,
+          38
+        ]
+      ],
+      "gallery": [
+        {
+          "id": "01",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "100x38-01.psd"
+        },
+        {
+          "id": "02",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "100x38-02.psd"
+        },
+        {
+          "id": "03",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "100x38-03.psd"
+        },
+        {
+          "id": "04",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "100x38-04.psd"
+        },
+        {
+          "id": "05",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "100x38-05.psd"
+        },
+        {
+          "id": "06",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "100x38-06.psd"
+        },
+        {
+          "id": "07",
+          "contains_sku_artwork": true,
+          "print_instances": [
+            {
+              "layer_name": "PRINT_ARTWORK",
+              "region_description": "本图实际可见画面，制作时据实补充蒙版与变换"
+            }
+          ],
+          "psd_path": "100x38-07.psd"
+        }
+      ],
+      "listing": {
+        "title_template": {
+          "print_phrase": "Botanical",
+          "fixed_product_name": "Unframed Canvas Print"
+        },
+        "title": "Botanical Unframed Canvas Print",
+        "bullets": [
+          "Canvas material",
+          "Confirmed size options",
+          "Printed surface",
+          "Wall display",
+          "Artwork format"
+        ],
+        "description": "Plan example only. Write final copy from confirmed product facts and the selected artwork.",
+        "rules": {
+          "title_max": 125,
+          "bullet_max": 500,
+          "description_max": 500,
+          "title_source": "user_txt_fallback",
+          "bullet_source": "user_txt_fallback",
+          "description_source": "user_txt_fallback",
+          "limit_unit": "characters"
+        }
+      },
+      "variants": [
+        {
+          "id": "A001",
+          "artwork_path": "A001/100x38/印花.png",
+          "copy_path": "A001/100x38/文案.txt",
+          "overview_path": "A001/100x38/总览.jpg",
+          "images": {
+            "01": "A001/100x38/01.png",
+            "02": "A001/100x38/02.png",
+            "03": "A001/100x38/03.png",
+            "04": "A001/100x38/04.png",
+            "05": "A001/100x38/05.png",
+            "06": "A001/100x38/06.png",
+            "07": "A001/100x38/07.png"
+          },
+          "listing": {
+            "print_phrase": "Botanical",
+            "title": "Botanical Unframed Canvas Print"
+          }
+        }
+      ],
+      "workflow": {
+        "template_state": "draft"
+      }
+    }
+  ]
+}

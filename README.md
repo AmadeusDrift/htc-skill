@@ -2,6 +2,21 @@
 
 版本 **0.8.3**。用于实物截图／参考资料／印花到商品图文、完整轮播图和可替换PSD；核心是先做好第一套视觉，再冻结母版换印花。不是店铺发布、选品搜索或独立制作工作台。
 
+## 同仓库的四个独立 Listing Skill
+
+原 `pod-haul-listing` 入口保留在仓库根目录。以下四个产品专用 skill 位于 `skills/`，均为 1.0.0，具有独立入口、产品档案、参考图、脚本和许可，可分别安装使用。
+
+| Skill | 产品与默认范围 |
+|---|---|
+| [pod-canvas-print-listing](skills/pod-canvas-print-listing/SKILL.md) | 卷装无框画芯；60×30、100×38 cm 各一套七图 |
+| [pod-heart-ceramic-listing](skills/pod-heart-ceramic-listing/SKILL.md) | 心形陶瓷挂饰；7.4×7×0.3 cm，一套七图 |
+| [pod-pvc-scroll-listing](skills/pod-pvc-scroll-listing/SKILL.md) | PVC 挂轴画；20×30、30×45、40×60 cm 共一套八图 |
+| [pod-wood-hanger-listing](skills/pod-wood-hanger-listing/SKILL.md) | 实木挂条画；20×30、30×45、40×60 cm 共一套八图 |
+
+这些 skill 源自本地 `pod-haul-listing` 0.9.0 流程，并已包含自己的资源副本，不依赖根目录 skill 的版本或安装。根目录当前仍为远端原有 0.8.3；本次仅新增四个 skill 与安装索引。产品专用规则不继承水晶贴固定 03 的例外。
+
+安装方法与验证范围见 [skills/README.md](skills/README.md)。
+
 ## 使用
 
 使用 `$pod-haul-listing`，提供实物截图、用户指定参考、印花与已确认事实。新商品先规划买家、购买理由、场景、通用文案和事实卖点，由图片生成工具完成全部图片文字与排版，PS只制作印花PSD；完成第一套正式七图后审核／按明确委托自行检查，冻结PSD。后续只能替换印花智能对象，不按印花重做场景或PSD。

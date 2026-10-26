@@ -1,0 +1,6 @@
+interface:
+  display_name: "POD实木挂画Listing"
+  short_description: "制作实木挂画三规格合一的七张基础图、额外画芯说明及全实例可替换印花PSD"
+  default_prompt: "使用 $pod-wood-hanger-listing，根据产品资料和印花制作完整商品图文及可替换印花PSD。"
+policy:
+  allow_implicit_invocation: true

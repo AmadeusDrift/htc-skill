@@ -1,0 +1,6 @@
+interface:
+  display_name: "POD心形陶瓷挂件Listing"
+  short_description: "制作单一尺寸心形陶瓷挂件的商品文案、完整七图与保留孔位挂绳的可替换印花PSD"
+  default_prompt: "使用 $pod-heart-ceramic-listing，根据产品资料和印花制作完整商品图文及可替换印花PSD。"
+policy:
+  allow_implicit_invocation: true

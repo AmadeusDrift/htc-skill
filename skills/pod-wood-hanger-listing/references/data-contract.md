@@ -1,0 +1,17 @@
+# 产品清单与阶段校验
+
+本skill使用自己的schema_version="1.0"，不调用原skill的validate.py或其固定transfer/七图契约。字段示例见[project-example.json](../assets/project-example.json)，是计划阶段示例，不含成品、冻结证据或虚构批准，不能直接当作实际完成清单。
+
+- product_type必须与product-profile.json一致。默认sets与档案中的规格组一一对应。用户后来明确变更范围时可在scope_override记录用户原话evidence，并按需提供新的sets、images_per_set或fixed_product_name；未提供的字段沿用档案。只覆盖该任务，不修改默认档案；不允许因漏图自行减少规模。改张数时同时补齐对应图位方案和delivery清单。
+- sets每项id、sizes_cm、gallery、listing、variants、workflow。gallery默认01—07；实木/PVC加08。用户明确覆盖张数后按scope_override.images_per_set对应的01起连续图位执行。05挂画一张内展示三个尺寸，不能拆成三套。
+- gallery每项显式contains_sku_artwork布尔值。为true时提供非空print_instances（layer_name及region_description）、根目录psd_path。为false时不声明可换实例。每图所有可见印花逐一登记，layer_name唯一，匹配真实顶层智能对象；机器不从图片自动识别漏报对象。
+- 可补buyer_question/composition/overlay_text/overlay_text_zh/fact_ids/text_production/detail_panels/blank_path/printed_path/template_spec等生产信息。print_instances补source_canvas、mask/transform/foreground/lighting/protected_regions及边缘检查证据。每个图位都有独立设计与来源，不以通过schema取代方案。
+- listing记录title_template.print_phrase/fixed_product_name、完整title、恰好五条bullets、description及rules。rules有title_max/bullet_max/description_max、各自_source及limit_unit="characters"；官方字节限额须另验。事实表与中文摘要在全局或每套资料中，文案逐条引用事实。
+- variants每项id、images（完整图位到产品相对路径）、artwork_path、copy_path、overview_path。可在variants[].listing提供本SKU的print_phrase与完整title，仅覆盖这两个字段；五点、描述及固定产品名称沿用套级listing，不能随SKU改材质或产品身份。未提供时沿用套级首款标题。每个SKU文案包含自己的完整标题与共享五点、描述。所有正式文件必须位于本SKU目录（目录名等于id或以id加连字符开头），相对路径不得越出产品根目录或借用其他SKU成品。每套可多印花；默认套数并不限制用户后续SKU数。同印花在帆布两套中的ID保持一致。
+- workflow在首套审核后记录template_state="frozen"、variant_method="smart-object-only"、first_set_review.status="approved"或"delegated"、evidence、ai_visual_review=true及template_hashes。approved需要真实完整首套批准，delegated需要不暂停的委托依据，不互相伪造。
+
+plan阶段核对声明结构，不要求文件已存在；files阶段要求完整成图、附加文件、真实PSD文件头与冻结证据，所有实际PSD都在template_hashes中且哈希一致。场景画布canvas像素宽高可全局提供，files会逐图校验。PSD文件头只排除伪装扩展名，不证明可编辑智能对象；必须实际重开并替换验收。
+
+所有能力结论分开报告：资料/机械检查、整套视觉检查、实际模板替换、平台适用性。产品图和真实PSD尚未制作时只能称skill已创建，不称商品母版已通过。
+
+PSD路径按Windows不区分大小写的身份判断，不允许用大小写别名把多个图位指向同一母版；真实冻结哈希键须逐一对应声明路径。

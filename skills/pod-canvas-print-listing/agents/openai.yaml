@@ -1,0 +1,6 @@
+interface:
+  display_name: "POD卷装帆布画芯Listing"
+  short_description: "制作横版卷装帆布画芯的商品文案、完整七图及可替换印花PSD，分别管理两个尺寸母版"
+  default_prompt: "使用 $pod-canvas-print-listing，根据产品资料和印花制作完整商品图文及可替换印花PSD。"
+policy:
+  allow_implicit_invocation: true
