@@ -1,0 +1,4 @@
+interface:
+  display_name: "黄铜雕像生图"
+  short_description: "按雕像款式制作七图轮播与商品文案"
+  default_prompt: "使用 $htc-brass-figurine-images，根据这款黄铜雕像的产品图和尺寸资料，制作适合其造型的七图轮播与标题、五点和产品描述。"
