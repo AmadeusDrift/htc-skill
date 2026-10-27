@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTC 通用 POD 生成"
+  short_description: "按产品自由规划商品图文，制作联动 PSD 并批量换图"
+  default_prompt: "使用 $htc-general-pod-generator，按实际产品和平台要求规划 POD 商品图文，完成可替换印花的 PSD 母版及需要的批量交付。"

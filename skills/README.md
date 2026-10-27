@@ -1,4 +1,6 @@
-# 产品专用 Listing Skills
+# Listing Skills
+
+新增独立通用入口：[htc-general-pod-generator](htc-general-pod-generator/SKILL.md)（HTC 通用 POD 生成）。按产品形态和用户范围自由规划图文，内置共享 PSD 联动与批量换图工具；与下方四个产品专用 skill 分别安装。
 
 四个 skill 同仓库维护、分别安装；每个目录包含完整资源，执行时按相应 `SKILL.md` 使用。根目录的 `pod-haul-listing` 仍是原有独立入口。
 

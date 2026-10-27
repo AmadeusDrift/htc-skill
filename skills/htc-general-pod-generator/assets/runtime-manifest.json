@@ -1,0 +1,20 @@
+{
+  "runtime_version": "1.0.0",
+  "schema_version": "pod-mockup/1",
+  "files": {
+    "batch-export.jsx": "3d3d2f21c3a017fca30d6d70248eb48665154117bec37f28ac370fd6ab569ae5",
+    "build-shared-template.jsx": "0d13d089f7ca53ae48978510e255060c0e0044ac5f6b8c4b60f8aeb3f64714bf",
+    "inspect-shared-template.jsx": "4c6ecf33d2bccd3ff32ef2e34059133452773067715b10001e8309584b5db1cc",
+    "mockup-core.js": "27ffc634de7f8630b936bfd282e03f1aa03cf0978d8ebb8277539942b987c01d",
+    "mockup-geometry.js": "37fff00374d445ebce3663eedf15784eb7a5a465399b7549836b29065d2c447c",
+    "mockup_contract.py": "05943ae103d9c0b376ba62b2cc477a048d9ffe4691cf9b5e720cb49cac2d8a89",
+    "replace-current-template.jsx": "27bac2976c46e9cdeeddbedd23b86463e9ab6184410eba70dd18e852b595f664",
+    "run-mockup.ps1": "f843dd3df1c9c9520da6ab90006d9e7b3a6d0435211e95e27ebde23532da5b0c",
+    "validate-shared-delivery.py": "d3adb5f63d5ef55646d6274fb1d79e14b54e1995ec7f6c2297ac3cb670d11c1a"
+  },
+  "validated_scene_counts": [
+    7,
+    8
+  ],
+  "product_scope": "Declared templates only; independent product masks and visual evidence required"
+}

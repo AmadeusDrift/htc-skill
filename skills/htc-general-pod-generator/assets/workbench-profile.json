@@ -1,0 +1,26 @@
+{
+  "schema_version": "pod-skill-adapter/1",
+  "skill_id": "htc-general-pod-generator",
+  "product_type": "pod-general",
+  "default_scene_count": null,
+  "template_families": [],
+  "scene_count_authority": "用户要求、适用平台、产品信息需要及实际 template manifest",
+  "source_canvas_authority": "原生 PSD 母稿实际像素及 PPI",
+  "policies": {
+    "full_artwork": {"mode": "canvas", "fit": "cover"},
+    "preserve_layout": {"mode": "canvas", "fit": "contain"},
+    "transparent_cutout": {"mode": "alpha", "fit": "contain"}
+  },
+  "protected_regions": ["真实可印边界", "产品结构及前景遮挡"],
+  "stages": ["facts_copy", "gallery_design", "native_template_authoring", "inspect_manifest", "adapt_render", "qa_delivery"],
+  "authoring_executor": "根据实际产品制作并验证，不将平面 Build 视为复杂产品自动建模",
+  "entrypoints": {
+    "contract": "scripts/mockup_contract.py",
+    "photoshop": "scripts/run-mockup.ps1",
+    "manual_preview": "scripts/replace-current-template.jsx",
+    "delivery_check": "scripts/validate-shared-delivery.py"
+  },
+  "managed_photoshop_slots": 1,
+  "batch_output_layout": "artwork-template for multiple templates; artwork for one",
+  "validation_scope": "仅覆盖声明的实际模板及其验收证据"
+}
