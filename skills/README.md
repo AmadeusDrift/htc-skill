@@ -2,6 +2,10 @@
 
 四个 skill 同仓库维护、分别安装；每个目录包含完整资源，执行时按相应 `SKILL.md` 使用。根目录的 `pod-haul-listing` 仍是原有独立入口。
 
+## 当前版本
+
+2026-10-27 同步：根目录 `pod-haul-listing` 为 0.8.4，四个产品专用 skill 均为 1.2.0；五份 skill 均包含 1.0.0 共享母版运行工具，各自保留独立产品规则与资源。画芯规格以对应产品档案为准。运行工具接口与范围见各 skill 的 `references/shared-mockup.md`。
+
 ## 安装
 
 克隆本私有仓库需要具有读取权限的 GitHub 账号。安装工具如支持 GitHub 子目录，选择 `skills/<skill-name>`；不要把整个 `skills/` 当成一个 skill。

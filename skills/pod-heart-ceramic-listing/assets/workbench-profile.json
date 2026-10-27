@@ -1,0 +1,58 @@
+{
+  "schema_version": "pod-skill-adapter/1",
+  "skill_id": "pod-heart-ceramic-listing",
+  "product_type": "heart-ceramic",
+  "default_scene_count": 7,
+  "template_families": [
+    {
+      "id": "heart",
+      "sizes_cm": [
+        [
+          7.4,
+          7,
+          0.3
+        ]
+      ]
+    }
+  ],
+  "scene_count_authority": "产品已确认范围及实际template manifest；不把七图写死到八图产品",
+  "source_canvas_authority": "原生PSD母稿像素及PPI，不由商品厘米数或经验值推断",
+  "policies": {
+    "full_artwork": {
+      "mode": "canvas",
+      "fit": "cover"
+    },
+    "preserve_layout": {
+      "mode": "canvas",
+      "fit": "contain"
+    },
+    "transparent_cutout": {
+      "mode": "alpha",
+      "fit": "contain"
+    }
+  },
+  "protected_regions": [
+    "心形可印内沿",
+    "挂孔与挂绳",
+    "陶瓷倒角",
+    "手指遮挡"
+  ],
+  "stages": [
+    "facts_copy",
+    "gallery_design",
+    "native_template_authoring",
+    "inspect_manifest",
+    "adapt_render",
+    "qa_delivery"
+  ],
+  "authoring_executor": "Codex按本技能的产品/视觉规则制作，不把四角Build辅助当自动复杂产品建模",
+  "entrypoints": {
+    "contract": "scripts/mockup_contract.py",
+    "photoshop": "scripts/run-mockup.ps1",
+    "manual_preview": "scripts/replace-current-template.jsx",
+    "delivery_check": "scripts/validate-shared-delivery.py"
+  },
+  "managed_photoshop_slots": 1,
+  "batch_output_layout": "artwork-template for multiple templates; artwork for one",
+  "validation_scope": "协议/运行工具通过不代表此产品的历史PSD已迁移或视觉已重新验收"
+}

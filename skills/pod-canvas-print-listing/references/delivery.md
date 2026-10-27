@@ -1,12 +1,16 @@
 # 文件落位、完整套数与工具
 
+> 新建联动模式先读[统一联动流程](shared-mockup.md)：图数和共享实例由产品manifest声明，目录/工具/校验按该模式执行。本文未同步迁移的单图或旧listing字段只用于历史模式，不自动移动既有成果。
+
 一个产品一个根目录，一个印花一个SKU。心形/两种挂画的SKU内直接放完整七/八张、印花.png、文案.txt、总览.jpg；通用图允许每SKU复制一份。帆布同一印花SKU内设60x30与100x38尺寸子目录，每个子目录有完整七图、该尺寸规范印花.png、完整文案.txt、总览.jpg，不把两个比例交成一套七图，也不拆成两个不同印花SKU。
 
-所有需要换印花的PSD直接放产品根目录，以“规格组-图位.psd”区分，如60x30-01.psd、100x38-01.psd、three-sizes-05.psd；不按SKU复制PSD，不设templates一级目录，不为可编辑文字另建PSD。根目录可有纯材质无印花PSD但不强制制造，数量取决于真实可换区域。
+新联动模式每规格交一份“规格-七图联动.psd”，集中放母版目录；同一规格不同SKU复用母版，不复制一套PSD。每个SKU导出1—7张场景图、标准套图PNG和layout.json，整批附export-report.json；具体入口及检查见[共享母稿流程](shared-mockup.md)。原始印花独立保留，套图PNG不充当实际印刷源文件。已批准的旧单图PSD及其目录保留，不因流程更新自动迁移。
 
 原始资料放工作参考；方案、listing.json、生产记录、校验日志放工作资料；候选底图和必要测试放工作资料/中间产物；预览缓存放工作资料/预览缓存。正式图直接导出到SKU或帆布规格目录，不另复制到delivery/variants/scene-variants。已有图片和PSD不因skill更新自动迁移、删除或返工。
 
-## 清单与检查
+## 旧单图清单与检查
+
+以下validate_project及gallery_delivery清单约定用于旧单图模式；联动模式使用共享母稿参考中的配置、原生检查、validate-shared-delivery.py和视觉验收，不将两种模式的通过结论混用。
 产品全局listing.json按[data-contract.md](data-contract.md)管理。每个规格套另建delivery-规格组.json，例如工作资料/delivery-60x30.json；project_root=".."，images_per_set显式7或8，slots列01—07或01—08。多规格同套的挂画只建一份八图清单。每个variant代表同印花SKU在该套的导出任务，images逐项列该SKU内成图路径，templates记录本套实际PSD路径和真实冻结SHA256。
 
 ```powershell

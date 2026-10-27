@@ -1,5 +1,7 @@
 # 数据、审核与交付清单
 
+> 新建联动模式先读[统一联动流程](shared-mockup.md)：图数和共享实例由产品manifest声明，目录/工具/校验按该模式执行。本文未同步迁移的单图或旧listing字段只用于历史模式，不自动移动既有成果。
+
 ## 工作资料/listing.json：图文与设计决策
 
 新任务使用 `schema_version="0.4"`，要求视觉策略完整。省略版本只作为旧数据兼容并给出警告，不能称为新设计门槛通过。`validation_stage=product-info` 只检查资料，`gallery` 检查默认七图规划。`scripts/validate.py` 返回 `MECHANICAL_PASS_REVIEW_REQUIRED`，不验证图片美感、真实批准、PSD能力或平台合规。
@@ -7,7 +9,7 @@
 - `product.id/type/marketplace/language`、`facts[{id,text,confirmed,source}]`：实物与用户确认事实。`print_region.description` 记录视觉位置；人工确认用 `confirmed=true`，明确委托用 `placement_review={status:"delegated",evidence:"用户原话"}`，无须伪造人工确认。`manufacturing_confirmed` 另记实际加工确认，不由视觉委托推定。
 - `listing.title/bullets/fact_ids`：标题、恰好五点和事实引用；`description` 默认交付共享产品描述。新任务另填 `title_template={print_phrase,fixed_product_name}`，完整标题必须为两字段去首尾空格后以一个空格连接；固定名称同底板各款一致。旧数据未声明此字段仍可读取，不据此证明已符合新标题标准。中文摘要／参数放 `product.summary_zh` 与事实表。
 - `rules.title_max/title_source`：声明使用的限制及依据，未核实平台政策时不得把编辑目标说成官方限制。各`*_max`优先按适用站点／product type官方数值设置；官方未给具体数字或未取得适用数值时按用户TXT兜底：`title_max=125`、`bullet_max=500`（每条）、`description_max=500`（整段），含空格。只对缺失字段兜底，不覆盖已知官方值。另记录`title_source/bullet_source/description_source/limits_checked_at/limit_unit`，兜底来源标记`user_txt_fallback`及原因，不称官方已核实。旧null仍能读取但不再作为新任务默认；本脚本按清单中显式数值校验，不自动判断官方适用范围或把null转换为兜底值。计量为字符时使用本校验器，bytes须另验。`image_policy_status` 仍单独记录。
-- `gallery`：默认每套七个图位，共用图计入这七项。每项 `id/role/overlay_text/overlay_text_zh/fact_ids/reuse_scope`。首项 `role=scene`、`overlay_text=[]`。新任务后六项依次为 `benefit/benefit/detail/size/scene/use`，对应产品卖点及完整功能／水晶贴卖点／产品细节／三维尺寸／使用场景／手持质感；两个benefit分别填 `content_focus=product` 和 `content_focus=transfer`。旧角色仍可读取，但不代表新七图内容已核验。
+- `gallery`：默认每套七个图位，每项 `id/role/overlay_text/overlay_text_zh/fact_ids/reuse_scope`。01为 `role=scene`、`overlay_text=[]`；02为 `benefit`、`content_focus=product`；03由 Codex 自行判断用途，场景图用 `scene`，功能图沿用 `benefit` 与 `content_focus=product`；文案字段按同类图位规则填写；04—07依次为 `detail/size/scene/use`。不再要求03为transfer或引用固定工艺文案。
 - `gallery_strategy`：新规划填写 `buyer_profile/core_buying_reason/visual_direction`；每图补 `buyer_question/composition/reuse_scope`。校验器检查这些声明完整及中英文条数，不替代视觉审核。
 - `images_per_set` 默认7；用户明确改规模时同时填写 `images_per_set_source`。此字段与delivery清单对应，不能为了缺图自行减少规模。
 - `gallery[].blank_path/printed_path/psd_path/template_spec`：适用图位双PNG与PSD、源画布、印花区域、蒙版、前景、光影、变形及全部印花对象映射；固定底图已包含图片工具定稿的正式文字，不再声明PS主题文字字段。通用图用 `asset_path`。
@@ -51,7 +53,7 @@
 
 - `color_variants`：每项包含 `id/artwork_id/base_color/is_primary`；主配色多色组合的每个产品列入01的 `print_instances`（颜色、智能对象名、区域／变换）。一个印花一个SKU，多底色仍归同一SKU；必要的分色导出任务可有不同任务ID但路径都放该SKU颜色子目录，不另建顶层颜色SKU。颜色共用图仅在实物结构与颜色均适用时复用。
 - `product.dimensions`：`length/height/thickness`，每项记录 `value/unit/fact_id`，对应05图的三维引线；缺参数不生成虚构数值，不把尺寸验收标通过。
-- 03使用 `content_focus=transfer`，5条固定工艺卖点逐条引用确认事实。04用 `detail_panels[{location,description,fact_ids}]` 记录每个宫格的位置与简洁描述；单特写可只一项，最终仍仅04一个文件。
+- 03记录 Codex 选定的场景或功能用途，沿用同类图位的数据与事实依据要求，不要求 `transfer_copy`。04用 `detail_panels[{location,description,fact_ids}]` 记录每个宫格的位置与简洁描述；单特写可只一项，最终仍仅04一个文件。
 - `gallery[].text_production`：记录图片生成工具与最终图路径；PS仅制作印花PSD。文字、尺寸线和版式问题回图片工具修改，冻结后修订另开版本，不在PS改字。
 - 以上补充字段供生产与语义审核，当前校验器仅检查已有字段及显式声明的 `title_template` 拼接；不宣称自动验证三维尺寸、5条工艺卖点、多宫格描述或多对象替换。
 - 仓库贴标，不增加第8张DIY图、粘贴示意图或教程视频；不借技能更新修改历史图片／PSD。
@@ -62,8 +64,8 @@
 
 每个印花记录 `coverage_mode=full_bleed|cutout`、有效内容边界、规范源画布与边缘处理；每个贴附实例记录路径／蒙版、真实内沿、变换、保护区域和实际边缘检查。标题规划记录产品占比、留白、字体风格和换行决策，不以固定字号代替判断。机械校验器不自动证明这些视觉要求已满足。
 
-0.8.0：`transfer_copy`按assets/uv-dtf-copy.json保存固定标题、五点及用户确认来源；不为这5项继续标缺项。04与其他图位一样记录所有印花实例及冻结变换／蒙版；源图记录像素尺寸、有效内容边界、规范画布和coverage_mode。
+历史0.8.0曾使用固定 `transfer_copy`；0.8.4起新任务不要求此字段，旧资产只供历史参考。04与其他图位一样记录所有印花实例及冻结变换／蒙版；源图记录像素尺寸、有效内容边界、规范画布和coverage_mode。
 
-## 0.8.3 排版决策与暂停范围
+## 0.8.4 场景与底板卖点
 
-03的`transfer_copy`仍按固定文案资产逐字使用；图文位置、换行、产品占比和留白是随产品变化的设计决策，不添加固定分栏或固定文字区域字段。记录本次操作是新制／排版优化、仅改文案还是仅换印花，以区分构图授权。哑光／亮面对比页与小窗暂停，不把候选示意登记为正式图位或已批准素材。
+03由 Codex 根据产品特点与整套图的信息需要，自行判断采用场景图还是功能图，不要求用户另选路线。作图逻辑与其他场景图、功能图一致，包括场景、构图、文案、排版、事实依据及制作流程；与01、02、06避免重复；取消水晶标卖点图的四条路线选择，不再要求固定水晶标标题及五条工艺卖点。哑光还是亮面由用户团队自行判断，不设选择或确认关卡，也不默认制作材质对比图。不添加表面类型必填字段。记录新制／排版优化、仅改文案或仅换印花，保护已有批准版。

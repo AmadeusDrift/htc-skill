@@ -20,11 +20,20 @@
           38
         ]
       ]
+    },
+    {
+      "id": "30x30",
+      "sizes_cm": [
+        [
+          30,
+          30
+        ]
+      ]
     }
   ],
-  "version": "1.0.0",
-  "confirmation_date": "2026-10-25",
-  "authority": "User confirmed final scope in this conversation",
+  "version": "1.1.0",
+  "confirmation_date": "2026-10-27",
+  "authority": "用户确认画芯三个尺寸分别三份PSD：60×30、100×38、30×30 cm",
   "material": {
     "print_surface": "canvas",
     "hanger": null

@@ -1,0 +1,3 @@
+#target photoshop
+$.evalFile(new File(MOCKUP_TOOLS+'/mockup-geometry.js'));$.evalFile(new File(MOCKUP_TOOLS+'/mockup-core.js'));
+MockupCore.run(function(){var C=MockupCore,doc=null;try{doc=C.openCopy(MOCKUP_JOB.template,'MOCKUP_READ_ONLY_INSPECTION');var data=C.inspect(doc,MOCKUP_JOB.mother||'母稿');if(MOCKUP_JOB.expected_scene_ids)MockupGeometry.checkScenes(data.scene_ids,MOCKUP_JOB.expected_scene_ids);var result={status:'inspected',template:MOCKUP_JOB.template,mother:MOCKUP_JOB.mother||'母稿',inspection:data};if(MOCKUP_JOB.report)C.write(MOCKUP_JOB.report,result);return result;}finally{if(doc)doc.close(SaveOptions.DONOTSAVECHANGES);}});

@@ -5,7 +5,18 @@ description: Use when creating POD Haul listing copy, seven base images plus an 
 
 # POD PVC挂轴画Listing
 
-版本1.0.0。用于本类产品的资料、Listing文案、完整图集、印花PSD母版和定稿换图。沿用pod-haul-listing 0.9.0的成熟流程，本skill资源独立；不修改或运行原skill，不继承其固定UV DTF03、03免建PSD或仓库贴标口径。
+版本1.1.0。用于本类产品的资料、Listing文案、完整图集、印花PSD母版和定稿换图。沿用pod-haul-listing 0.9.0的成熟流程，本skill资源独立；不修改或运行原skill，不继承其固定UV DTF03、03免建PSD或仓库贴标口径。
+
+
+## 联动PSD、印花适配与工作台接口
+
+新建模板及批量换图先读[统一联动流程](references/shared-mockup.md)及[产品接口配置](assets/workbench-profile.json)。每个确定的模板族集中为一份共享母稿、多场景PSD，图数从产品及manifest读取；逐图声明印花实例，固定图为0。先完成真实边界、孔洞/挂件/前景等保护，再换图生产，不能因技术接口统一而改变产品口径。
+
+调用链为Inspect → 模板manifest → 印花文件夹生成batch配置 → Export → 报告/视觉验收。保留源图，统一像素和母稿实际PPI；完整画面cover/contain与透明图案alpha+contain分别配置。不为容错主动内缩露底，不跨真实不可印边；重点主体/文字的裁切先检查。手动单张预览另有入口，不把它当文件夹批量导出界面。
+
+五个skill自带同版本运行工具，接口一致且可独立使用；产品规则和素材仍各自独立。资料准备/文件校验可并行，同一PS的自动制作/检查/导出使用统一互斥入口串行处理。进度、失败和取消输出结构化记录，工作台后续直接调用，不另写贴图算法。本轮不自动创建工作台或改写历史商品PSD。
+
+下文旧单图PSD、旧清单/校验器用于其已声明支持的历史模式；新建联动模式遵循统一流程，不混用通过结论。完整Listing仍按原要求交文案、原稿和总览，不能把纯PNG批次称作完整Listing交付。
 
 ## 已确认产品口径
 销售物为PVC挂轴结构加油画布画芯的挂画。PVC描述挂轴，不把画芯改写成PVC片材，也不画成实木挂条或四边框。只选20×30、30×45、40×60 cm，排除供应商25×37.5 cm等未选规格，共一套八图。
@@ -34,9 +45,9 @@ description: Use when creating POD Haul listing copy, seven base images plus an 
 
 ## 按阶段执行
 1. 新产品：读[生产与审核](references/production-workflow.md)，整理事实、印花和买家购买理由；用[文案规则](references/copy-and-policy.md)给出中文资料、固定产品名称加可变印花前缀的英文标题、五点及描述。固定名称默认`Canvas Wall Hanging with PVC Hangers`。
-2. 首套：图片生成工具完成场景、正式文字与排版，可印区无旧图案；再读[PSD与固定替换](references/simple-psd.md)，PS只制作印花智能对象、蒙版、透视、遮挡、光影，不制作可编辑文案层。完成本套全部带印花成图及适用PSD后，展示总览、自查并审核。
+2. 首套：图片生成工具完成场景、正式文字与排版，可印区无旧图案；再读[PSD与固定替换](references/simple-psd.md)，PS只制作共享母稿及各实例的蒙版、透视、遮挡、光影，不制作可编辑文案层；按模板族合成联动PSD，图数保持本产品七/八图口径。完成本套全部带印花成图及适用PSD后，展示总览、自查并审核。
 3. 冻结生产：记录首套版本、真实审核/委托依据和PSD SHA256。三规格均为2:3。每个可见印花面记录独立智能对象／变换／蒙版，保护PVC上下轴、端部、挂绳及夹持边界；尺寸图多产品和08中若有当前SKU印花，都同步替换。 后续按固定入口仅换源内容，保持图文场景和母版哈希不变，不逐款重生场景或重建PSD。
-4. 交付：按[目录与交付](references/delivery.md)放完整成图、适用PSD、印花、文案、总览；资料按[数据契约](references/data-contract.md)管理。先plan检查，实际成品齐备后files检查，并完成独立视觉及真实PS替换验收。
+4. 交付：按[目录与交付](references/delivery.md)放完整成图、适用PSD、印花、文案、总览；资料按[数据契约](references/data-contract.md)管理。联动模式按统一接口检查manifest、原生替换、图数、覆盖及哈希；旧模式仍使用原plan/files清单校验。完成独立视觉验收，不把结构检查当成商品通过。
 
 已有批准母版只换图时复用版本与映射；只要总览/打包时直接组合已有图，不生图、不重开PS。用户要求不要再改时冻结，仅执行授权输出；取消中间暂停时记录delegated与原话，不伪造approved。默认不ZIP、不新增视频、不发布店铺、不迁移历史成果。
 

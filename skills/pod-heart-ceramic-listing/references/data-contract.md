@@ -1,5 +1,7 @@
 # 产品清单与阶段校验
 
+> 新建联动模式先读[统一联动流程](shared-mockup.md)：图数和共享实例由产品manifest声明，目录/工具/校验按该模式执行。本文未同步迁移的单图或旧listing字段只用于历史模式，不自动移动既有成果。
+
 本skill使用自己的schema_version="1.0"，不调用原skill的validate.py或其固定transfer/七图契约。字段示例见[project-example.json](../assets/project-example.json)，是计划阶段示例，不含成品、冻结证据或虚构批准，不能直接当作实际完成清单。
 
 - product_type必须与product-profile.json一致。默认sets与档案中的规格组一一对应。用户后来明确变更范围时可在scope_override记录用户原话evidence，并按需提供新的sets、images_per_set或fixed_product_name；未提供的字段沿用档案。只覆盖该任务，不修改默认档案；不允许因漏图自行减少规模。改张数时同时补齐对应图位方案和delivery清单。

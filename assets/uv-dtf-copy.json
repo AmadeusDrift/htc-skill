@@ -8,7 +8,9 @@
     "Easy to use"
   ],
   "confirmed_by": "user",
-  "confirmation": "本对话用户统一确认后续所有产品03固定用这五点；UV DTF中间有空格，Transfer的T大写",
+  "confirmation": "历史确认：0.8.4起03改为普通场景或底板卖点图，不再要求此固定文案",
   "scope": "transfer print only; not whole-product performance",
-  "editable_text": false
+  "editable_text": false,
+  "status": "historical_not_required",
+  "superseded_by": "0.8.4"
 }
