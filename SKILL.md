@@ -1,9 +1,9 @@
 ---
-name: pod-haul-listing
+name: dtf-transfer-pod-listing
 description: 用于根据实物截图、参考资料和印花素材制作 POD 商品图文、完整轮播图及可替换印花的 PSD，或在已定稿母版上更换图案、输出多套轮播图与总览。
 ---
 
-# POD 商品视觉与智能对象母版
+# DTF Transfer POD Listing
 
 版本 **0.9.0**。核心顺序：**图片生成工具完成画面、全部图片文字与排版 → PS只制作印花PSD → 首套七图审核 → 冻结母版 → 仅换印花导出。** 已有图片、PSD和批准版本不因技能更新自动返工。
 
