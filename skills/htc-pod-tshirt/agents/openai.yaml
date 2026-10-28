@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTC POD T-Shirt"
+  short_description: "HTC T恤轮播、通用细节、尺码修订及可替换印花PSD样机"
+  default_prompt: "使用 $htc-pod-tshirt，依据我的T恤资料和印花制作轮播预览、通用细节与尺码图，再按确认范围制作联动PSD。"

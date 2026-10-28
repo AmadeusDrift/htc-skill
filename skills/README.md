@@ -43,3 +43,7 @@ python -X utf8 scripts/validate_project.py assets/project-example.json --stage p
 单元测试和示例计划只验证程序行为与声明结构，不代表实际商品图片、Photoshop 替换效果或平台上架审核通过。商品执行仍须遵守各 skill 的独立产品规则。
 
 2026-10-26 上传验证：四份 skill 格式检查、四份示例计划及各 21 项交付测试（共 84 项）通过；86 个源文件核对完成，除来源路径匿名化外均与本机安装副本哈希一致，50 个内部相对链接有效，JSON 与 Python 语法检查通过。测试临时目录设在工作区，以避开沙盒系统临时目录的权限限制。未调用图片生成或真实 Photoshop 生产。
+
+## HTC POD T-Shirt
+
+新增独立入口：[htc-pod-tshirt](htc-pod-tshirt/SKILL.md)。用于 HTC T 恤的日常/季节轮播、通用材质与版型细节、尺码单图修订及可替换印花 PSD 样机。规则与原生 PS 参考可独立安装；不包含真实商品图片或 PSD，也不承诺自动运行工具或平台验收。使用 `$htc-pod-tshirt`。
