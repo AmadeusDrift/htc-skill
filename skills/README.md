@@ -47,3 +47,6 @@ python -X utf8 scripts/validate_project.py assets/project-example.json --stage p
 ## HTC POD T-Shirt
 
 新增独立入口：[htc-pod-tshirt](htc-pod-tshirt/SKILL.md)。用于 HTC T 恤的日常/季节轮播、通用材质与版型细节、尺码单图修订及可替换印花 PSD 样机。规则与原生 PS 参考可独立安装；不包含真实商品图片或 PSD，也不承诺自动运行工具或平台验收。使用 `$htc-pod-tshirt`。
+
+
+2026-10-28：T恤入口升级为通用（general）／节日（holiday，含圣诞）双线路；主图用途与平台MAIN要求分别记录。新增[路线与圣诞七图](htc-pod-tshirt/references/routes.md)、[动作/景深/白胚验收](htc-pod-tshirt/references/visual-quality.md)和[最终AI人物文件元数据](htc-pod-tshirt/references/ai-person-metadata.md)，保留日常八图与局部修订规则。文档与行为测试不代表已重新生成图片、修复旧换图脚本或完成新商品PSD验收。

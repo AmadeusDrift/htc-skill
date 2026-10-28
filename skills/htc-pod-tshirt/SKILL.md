@@ -1,12 +1,18 @@
 ---
 name: htc-pod-tshirt
 license: MIT
-description: Use when creating or revising HTC POD T-shirt galleries, everyday or seasonal scene previews, garment detail and size images, or Photoshop mockups with replaceable chest artwork.
+description: Use when creating or revising HTC POD T-shirt galleries, general/everyday or holiday/Christmas image routes, garment detail and size images, or Photoshop mockups with replaceable chest artwork.
 ---
 
 # HTC POD T-Shirt
 
 根据真实 T 恤资料与印花制作独立商品图、总览及可替换印花 PSD。适用于新建、季节版改日常版、换图、单图修订；其他产品使用其专用 skill。
+
+## 通用／节日双线路
+
+新建或跨风格改版先读[双线路与圣诞七图](references/routes.md)，记录路线、主题和主图用途。未指定节日走general；明确圣诞等节日走holiday；仅借用圣诞款版型做日常仍走general。场景封面scene-hero与平台上传platform-main分开，不因节日路线覆盖渠道规则。男女款、衣色、套数和交付阶段独立记录，不自动扩做。
+
+两条路线共用：[画幅、景深、动作与白胚验收](references/visual-quality.md)、本页产品事实约束及PSD验证。含写实AI人物的最终文件按[人物元数据](references/ai-person-metadata.md)分类、写入和读回；无人图不误加。
 
 ## 先确定范围与事实
 
@@ -21,8 +27,9 @@ description: Use when creating or revising HTC POD T-shirt galleries, everyday o
 
 先按 [轮播与场景](references/gallery.md) 为每个图位记录：信息任务、地点与使用方式、色调和光线、机位/距离、动作、头部方向/视线、表情、文字层级、可见印花实例数。
 
-常见八图顺序可参考：主图 → 材质 → 版型 → 居家 → 通勤 → 工作 → 周末 → 尺寸。**这是可调整方案，不是固定八图规则。** 图数、顺序、男女款及季节均以当前任务为准。
+用户要圣诞七图时，按双线路参考覆盖主图、材质、结构、印花、尺寸及两张差异场景；卖点不足补场景，不省略事实图或虚构功能。其他任务的常见八图顺序可参考：主图 → 材质 → 版型 → 居家 → 通勤 → 工作 → 周末 → 尺寸。**这是可调整方案，不是固定八图规则。** 图数、顺序、男女款及季节均以当前任务为准。
 
+- 可换图场景先做无印花清洁底图并检查，再用PS映射印花形成审核图；不得直接生成烘焙印花后冒充共享源样机。预览临时映射不等于完整PSD交付，不人为增加未要求的白胚审批关卡。
 - 正式轮播预览逐张生成、逐张检查并交付独立图片；四宫格分镜或总览只能辅助审核，不能代替独立轮播图。
 - 首套默认所有图位有与用途匹配的真实环境；主图若有明确渠道/用户白底要求则例外。整套按范围覆盖至少三个明显不同地点/情境，同时改变镜头、构图、色温与明暗，不能只换背景道具。
 - 不仅换身体动作：头部方向、视线、表情也须有可见差异。不要每张都侧头、同一方向看镜外并微笑；不强制所有人物都笑。人物与衣服在合理姿态下保持一致，前胸印花辨识度不能被道具、包带、手臂或排版牺牲。
@@ -61,7 +68,9 @@ description: Use when creating or revising HTC POD T-shirt galleries, everyday o
 6. Inspect → manifest → plan → Export → 交付检查；登记实际尺寸、PPI、实例和哈希。代表性满版边界、透明留白、横向比例按真实模板测试，不能把局部测试说成完整套数。
 7. 技术通过不等于商品视觉、实物或平台验收；批准后才冻结版本和哈希。修订另存，不拿旧报告冒充新版本验证。
 
-## 交付口径
+## 最终文件与交付
+
+比例、景深、文字和贴图定稿并导出后，对含写实AI人物的最终上传文件写入XMP dc:subject关键词contains-synthetic-performer并独立读回验证；无人材质/结构/平铺尺寸图不加。不露脸的AI人体仍按人物处理；重导出需重新验证，不以可见AI字样、文件名、PSD关键词或旁置文件代替。具体适用范围、工具与来源见人物元数据参考。
 
 区分独立成图、示意/总览、清洁底图、真实联动 PSD、已完成导出、已验证范围、仍待确认项。PSD 必须给到实际可打开的文件与简短换图方法；失败保留产物和原因，不把预览 PNG、技术小样或准备好的脚本称为完成样机。未要求时不额外打包。
 
