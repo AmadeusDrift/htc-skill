@@ -5,6 +5,12 @@ description: Use when creating POD Haul listing copy, seven base images plus an 
 
 # POD实木挂画Listing
 
+
+## PSD 白胚审核与真实换图必读
+
+所有包含 PSD 的新建或修订轮播，先读 [白胚审核与真实换印花验收](references/psd-review-acceptance.md)。白胚完整轮播同时附上**一张 2×2 四宫格，将透明底纯文字、透明底纯图案、透明底图文、满版图文四款的主图拼在一起**；四款须内部实套完整轮播并逐实例检查。每次轮播修订审核带上当前实套总览，未变化成果可复用。技术压力图不能替代四款真实审核印花；按实际 JSX、输入边界、满版覆盖、透视、光影及隔离迁移分别验收。仅拼已有批准图片、非 PSD 或用户明确缩小范围时按实际授权执行，不强制重做或提前交付最终 PSD。
+
+
 版本1.1.0。用于本类产品的资料、Listing文案、完整图集、印花PSD母版和定稿换图。沿用pod-haul-listing 0.9.0的成熟流程，本skill资源独立；不修改或运行原skill，不继承其固定UV DTF03、03免建PSD或仓库贴标口径。
 
 

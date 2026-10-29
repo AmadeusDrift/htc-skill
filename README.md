@@ -96,3 +96,7 @@ python -X utf8 <skill-creator目录>/scripts/quick_validate.py <本仓库>
 ## 0.8.3 发布验证
 
 交付21项与文案校验26项，共47项针对性单测通过；固定文案、技能frontmatter／版本、32个本地链接及改动脚本语法检查通过。本轮未生成图片或重跑真实Photoshop成图，已有商品测试范围见HANDOFF。PyYAML未安装，未运行依赖它的quick_validate.py；未安装新依赖。
+
+## PSD 产品审核补充
+
+带 PSD 流程的产品在白胚轮播审核时，同时提供一张四款主图拼成的 2×2 总览：透明纯文字、透明纯图案、透明图文、满版图文。四款内部实套完整轮播，逐实例检查边缘、透视、遮挡与光影，并用实际交付换图入口验收。各独立 skill 的 `references/psd-review-acceptance.md` 说明完整要求；每次修订审核同步展示当前实套效果。
