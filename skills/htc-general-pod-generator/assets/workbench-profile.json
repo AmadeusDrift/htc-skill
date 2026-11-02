@@ -2,7 +2,7 @@
   "schema_version": "pod-skill-adapter/1",
   "skill_id": "htc-general-pod-generator",
   "product_type": "pod-general",
-  "default_scene_count": null,
+  "default_scene_count": 7,
   "template_families": [],
   "scene_count_authority": "用户要求、适用平台、产品信息需要及实际 template manifest",
   "source_canvas_authority": "原生 PSD 母稿实际像素及 PPI",
