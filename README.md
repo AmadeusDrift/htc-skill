@@ -100,3 +100,12 @@ python -X utf8 <skill-creator目录>/scripts/quick_validate.py <本仓库>
 ## PSD 产品审核补充
 
 带 PSD 流程的产品在白胚轮播审核时，同时提供一张四款主图拼成的 2×2 总览：透明纯文字、透明纯图案、透明图文、满版图文。四款内部实套完整轮播，逐实例检查边缘、透视、遮挡与光影，并用实际交付换图入口验收。各独立 skill 的 `references/psd-review-acceptance.md` 说明完整要求；每次修订审核同步展示当前实套效果。
+
+
+## HTC 上架工作流
+
+新增独立技能：[htc上架工作流](skills/htc-listing-workflow/SKILL.md)（`$htc-listing-workflow`）。从一张合并中文表单开始，支持图片对照表、关键词/SKU命名图片、普通单品与父子体、htcerp词库文案扫描修订、可选上架填表及下拉值精确校验。默认不用运营配置表、不生成 ZIP；缺资料时保留已填内容，只标注待补或需确认项。
+
+[复制中文输入模板](docs/HTC上架工作流_中文输入模板.txt)。父子体字段已合并进同一张表，没有就留空。安装请选择完整子目录 `skills/htc-listing-workflow`，与原有技能独立，不覆盖第一工作流。
+
+本次验证：47 项离线回归测试通过，并检查文件完整性与词库哈希。测试不代表 Amazon 平台审核通过。扫描器依赖标准库，上架表只读检查额外使用 openpyxl；业务工作簿由 spreadsheets 技能与 artifact-tool 处理。

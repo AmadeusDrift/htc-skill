@@ -50,3 +50,12 @@ python -X utf8 scripts/validate_project.py assets/project-example.json --stage p
 
 
 2026-10-28：T恤入口升级为通用（general）／节日（holiday，含圣诞）双线路；主图用途与平台MAIN要求分别记录。新增[路线与圣诞七图](htc-pod-tshirt/references/routes.md)、[动作/景深/白胚验收](htc-pod-tshirt/references/visual-quality.md)和[最终AI人物文件元数据](htc-pod-tshirt/references/ai-person-metadata.md)，保留日常八图与局部修订规则。文档与行为测试不代表已重新生成图片、修复旧换图脚本或完成新商品PSD验收。
+
+
+## HTC 上架工作流
+
+[htc-listing-workflow](htc-listing-workflow/SKILL.md)（显示名：htc上架工作流），使用 `$htc-listing-workflow`。提供一张合并中文表单、图片目录和本批首SKU；普通单品与父子体共用表单，父子字段选填。支持本地 htcerp 词库、文案扫描修订、图片对照及可选 Amazon XLSX/XLSM 填表，精确匹配下拉允许值，缺项保留原表并标注。
+
+[中文输入模板](../docs/HTC上架工作流_中文输入模板.txt)。默认不要求配置表、不生成 ZIP；不包含真实商品素材、上架资料、账号凭据或本机缓存。词库来源和适配范围见该技能的 `references/dictionary-source.md` 与 `references/screening.md`。
+
+安装完整目录 `skills/htc-listing-workflow`；标准库扫描器可直接运行，上架表读取检查需要 openpyxl。进入该技能目录后可运行 `python -X utf8 -m unittest discover -s tests -v`（47项）。原有技能保持独立。

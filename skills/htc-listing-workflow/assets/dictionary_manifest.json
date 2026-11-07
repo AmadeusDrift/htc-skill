@@ -1,0 +1,17 @@
+{
+  "source": "https://htcerp.app",
+  "retrieved_on": "2026-11-07",
+  "engine_reference_version": "US-v0.3-r6",
+  "adapter": "htc-offline-v1",
+  "counts": {
+    "terms": 32248,
+    "ip_alias_records": 2418,
+    "supplement": 389,
+    "platform_history": 5
+  },
+  "sha256": {
+    "htcerp_dictionary.json": "9e420339ad464bf7e8756393ee4ec96bb36bbb65fa7b846db7eebf34fcfe7942",
+    "platform_history.json": "516bcc28077c324943365573ffa7e6a84a88a8d8a787bfd3d7c04606123b67d4",
+    "supplement_terms.csv": "39515a44378dee05f745fdbc1d3a132b813553589c23198c80b381eabf437f94"
+  }
+}

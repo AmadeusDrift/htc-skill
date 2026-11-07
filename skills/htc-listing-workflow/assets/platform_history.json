@@ -1,0 +1,7 @@
+[
+  {"term":"Apple","scope":"generic_pod","reason":"实际上传反馈5882将装饰画标题中的苹果题材识别为Apple品牌；保持图意改写，不改变Generic品牌。"},
+  {"term":"Alpine","scope":"generic_pod","reason":"实际上传反馈5882将高山题材识别为Alpine品牌；优先使用准确的山地画面描述。"},
+  {"term":"Tide","scope":"generic_pod","reason":"实际上传反馈5882将海岸题材识别为Tide品牌；保持海岸图意改写。"},
+  {"term":"Ginkgo Home","scope":"generic_pod","reason":"实际上传反馈5882命中关键词与Home Decor接缝形成的Ginkgo Home；扫描完整标题并改写普通题材词。"},
+  {"term":"Wildflower Hill","scope":"generic_pod","reason":"实际上传反馈5882将野花山坡题材识别为Wildflower Hill品牌；保持图意改写。"}
+]

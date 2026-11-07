@@ -1,0 +1,390 @@
+﻿category,term,note,severity
+copyright_ip,Mickey Mouse,迪士尼版权角色 高风险,high
+copyright_ip,Minnie Mouse,迪士尼版权角色 高风险,high
+copyright_ip,Elsa,冰雪奇缘角色 版权,high
+generic_ambiguous,Frozen,冰冻(通用义)或冰雪奇缘IP 需人工确认,review
+copyright_ip,Anna,冰雪奇缘角色,high
+copyright_ip,Olaf,冰雪奇缘角色,high
+generic_ambiguous,Stitch,缝纫/针脚(通用义)或星际宝贝角色 需人工确认,review
+copyright_ip,Lilo,莉罗与史迪奇,high
+copyright_ip,Moana,海洋奇缘,high
+copyright_ip,Simba,狮子王,high
+copyright_ip,Toy Story,皮克斯 IP,high
+copyright_ip,Buzz Lightyear,玩具总动员,high
+copyright_ip,Woody,玩具总动员,high
+copyright_ip,Spider-Man,漫威角色,high
+copyright_ip,Spider Man,漫威角色 变体,high
+copyright_ip,Iron Man,漫威角色,high
+copyright_ip,Marvel,漫威商标,high
+copyright_ip,Avengers,漫威,high
+copyright_ip,Batman,DC 角色,high
+copyright_ip,Superman,DC 角色,high
+copyright_ip,Wonder Woman,DC 角色,high
+copyright_ip,Harry Potter,华纳版权,high
+copyright_ip,Hogwarts,哈利波特,high
+copyright_ip,Star Wars,卢卡斯影业,high
+copyright_ip,Yoda,星战角色,high
+copyright_ip,Darth Vader,星战角色,high
+copyright_ip,Pokemon,任天堂/宝可梦,high
+copyright_ip,Pikachu,宝可梦角色,high
+copyright_ip,Nintendo,任天堂商标,high
+copyright_ip,Hello Kitty,三丽鸥,high
+copyright_ip,Sanrio,三丽鸥商标,high
+copyright_ip,Kuromi,三丽鸥角色,high
+copyright_ip,Cinnamoroll,三丽鸥角色,high
+copyright_ip,My Melody,三丽鸥角色,high
+copyright_ip,Snoopy,花生漫画,high
+copyright_ip,Peanuts,花生漫画,high
+copyright_ip,Charlie Brown,花生漫画,high
+copyright_ip,Bugs Bunny,乐一通,high
+copyright_ip,Looney Tunes,乐一通,high
+copyright_ip,Tom and Jerry,华纳,high
+copyright_ip,Sonic,索尼克,high
+copyright_ip,Minecraft,微软/Mojang,high
+copyright_ip,Fortnite, Epic,high
+copyright_ip,Roblox,Roblox 商标,high
+copyright_ip,Barbie,美泰版权,high
+copyright_ip,Paw Patrol,Spin Master,high
+copyright_ip,Peppa Pig,版权,high
+copyright_ip,Minions,小黄人,high
+copyright_ip,Shrek,梦工厂,high
+copyright_ip,Toothless,驯龙高手无牙仔 用户已标记,high
+copyright_ip,Light Fury,驯龙高手,high
+copyright_ip,How to Train Your Dragon,驯龙高手,high
+copyright_ip,Winnie the Pooh,迪士尼,high
+copyright_ip,Tigger,小熊维尼,high
+copyright_ip,Rapunzel,迪士尼公主,high
+copyright_ip,Belle,美女与野兽,high
+copyright_ip,Ariel,小美人鱼,high
+generic_ambiguous,Jasmine,茉莉花(通用义)或茉莉公主 需人工确认,review
+copyright_ip,Mulan,花木兰,high
+copyright_ip,Bluey,ABC 版权,high
+copyright_ip,Bingo,Bluey角色 / 宾果游戏(通用词),review
+copyright_ip,Groot,银河护卫队,high
+copyright_ip,Baby Groot,银河护卫队,high
+copyright_ip,Deadpool,漫威,high
+copyright_ip,Hulk,漫威,high
+copyright_ip,Thor,漫威,high
+copyright_ip,Captain America,漫威,high
+copyright_ip,Joker,DC,high
+copyright_ip,Encanto,迪士尼,high
+generic_ambiguous,Coco,椰子/名字(通用义)或皮克斯寻梦环游记 需人工确认,review
+copyright_ip,Squishmallow,注册商标 毛绒,high
+copyright_ip,Funko,Funko 商标,high
+brand,Disney,迪士尼商标 兼容写法用 for/compatible with,high
+brand,Nike,运动品牌,high
+brand,Adidas,运动品牌,high
+generic_ambiguous,Apple,苹果水果图案或苹果公司商标 需人工确认,review
+brand,Lego,乐高商标,high
+brand,Coca-Cola,可口可乐,high
+brand,Pepsi,百事,high
+brand,Samsung,三星,high
+brand,Sony,索尼,high
+brand,LG,LG 商标,high
+brand,Gucci,奢侈品牌,high
+brand,Louis Vuitton,奢侈品牌,high
+brand,Chanel,奢侈品牌,high
+brand,Hermes,爱马仕,high
+brand,Rolex,劳力士,high
+brand,Crocs,Crocs 商标,high
+brand,UGG,UGG 商标,high
+brand,Converse,匡威,high
+brand,Vans,万斯,high
+brand,New Balance,新百伦,high
+brand,Jordan,乔丹,high
+brand,Velcro,改用 hook and loop,high
+brand,Tupperware,特百惠,high
+brand,Band-Aid,改用 adhesive bandage,high
+brand,Kleenex,改用 facial tissue,high
+brand,Scotch,改用 tape,high
+brand,GoPro,GoPro 商标,high
+brand,Dr. Martens,马丁靴,high
+brand,YETI,YETI 商标,high
+brand,Stanley,Stanley 保温杯,high
+brand,Owala,Owala 商标,high
+brand,Hydro Flask,保温杯,high
+brand,Dyson,戴森,high
+brand,Nerf,玩具,high
+brand,Hot Wheels,风火轮,high
+brand,Fisher-Price,费雪,high
+brand,Play-Doh,培乐多,high
+brand,Crayola,绘儿乐,high
+brand,Sharpie,记号笔,high
+brand,Post-it,便利贴,high
+brand,Windex,玻璃清洁剂,high
+brand,Clorox,漂白剂,high
+brand,Febreze,空气清新剂,high
+brand,Swiffer,除尘拖把,high
+brand,Ziploc,密封袋,high
+brand,Pyrex,耐热玻璃,high
+brand,Nutella,榛子酱,high
+brand,Oreos,奥利奥,high
+brand,Cheerios,麦圈,high
+brand,Hasbro,孩之宝,high
+brand,Mattel,美泰,high
+brand,Bogg Bag,Bogg Bag 商标,high
+brand,Lululemon,lululemon 商标,high
+brand,Patagonia,巴塔哥尼亚,high
+brand,The North Face,北面,high
+brand,Columbia,哥伦比亚,high
+brand,Carhartt,工装品牌,high
+brand,Birkenstock,勃肯,high
+brand,Dr Pepper,饮料,high
+brand,Starbucks,星巴克,high
+brand,McDonald's,麦当劳,high
+brand,KFC,肯德基,high
+brand,IKEA,宜家,high
+brand,Tiffany,蒂芙尼,high
+brand,Pandora,潘多拉,high
+brand,Swarovski,施华洛世奇,high
+brand,Cartier,卡地亚,high
+brand,Prada,普拉达,high
+brand,Burberry,巴宝莉,high
+brand,Fendi,芬迪,high
+brand,Dior,迪奥,high
+brand,Versace,范思哲,high
+brand,BMW,宝马,high
+brand,Mercedes,奔驰,high
+brand,Ferrari,法拉利,high
+brand,Lamborghini,兰博基尼,high
+brand,Harley Davidson,哈雷,high
+brand,Caterpillar,猫牌 工程机械,high
+brand,John Deere,约翰迪尔,high
+brand,MLB,美国职业棒球大联盟,high
+brand,NBA,美国篮球协会,high
+brand,NFL,美国橄榄球联盟,high
+brand,NHL,国家冰球联盟,high
+brand,FIFA,国际足联,high
+brand,Olympics,奥运会,high
+brand,Olympic,奥运会,high
+brand,Super Bowl,超级碗,high
+registered_generic,Hula Hoop,改用 toy hoop 商标号739307,high
+registered_generic,Frisbee,改用 flying disc,high
+registered_generic,Slip 'N Slide,已注册商标,high
+registered_generic,SUPERBALL,已注册商标,high
+registered_generic,Boogie,冲浪板品牌,high
+registered_generic,Tetris,俄罗斯方块游戏商标,high
+registered_generic,Positive Moo,28类毛绒玩具商标,high
+registered_generic,Velcro,改用 hook and loop,high
+registered_generic,Onesie,改用 bodysuit 或 romper,high
+registered_generic,Chapstick,改用 lip balm,high
+registered_generic,Q-tip,改用 cotton swab,high
+registered_generic,Popsicle,改用 ice pop,high
+registered_generic,operation,近期扫号词 建议拆分或替换,high
+registered_generic,durable,近期扫号词 建议替换,high
+generic_ambiguous,Summer,夏季(季节义)或注册商标 需人工确认,review
+registered_generic,Morandi,莫兰迪色 近期扫号词,high
+registered_generic,collapsible,近期扫号词 建议替换,high
+registered_generic,Milkshake,用户已标记 疑似商标/歌曲关联,high
+promo_subjective,Best seller,促销主观词 违规,medium
+promo_subjective,Top rated,促销主观词,medium
+promo_subjective,Best selling,促销主观词,medium
+promo_subjective,Hot item,促销主观词,medium
+promo_subjective,Popular choice,促销主观词,medium
+promo_subjective,Free shipping,包邮 违规,medium
+promo_subjective,Free delivery,包邮,medium
+promo_subjective,Free gift,赠品,medium
+promo_subjective,Bonus,赠品,medium
+promo_subjective,Gift included,赠品,medium
+promo_subjective,On sale,促销,medium
+promo_subjective,Discount,折扣,medium
+promo_subjective,Best price,低价承诺,medium
+promo_subjective,Lowest price,低价承诺,medium
+promo_subjective,Cheap,低价,medium
+promo_subjective,100% Quality,质量承诺,medium
+promo_subjective,Money back,退款承诺,medium
+promo_subjective,Satisfaction Guarantee,满意度保证,medium
+promo_subjective,Order now,诱导购买,medium
+promo_subjective,Buy now,诱导购买,medium
+promo_subjective,Amazon's Choice,官方认证词,medium
+promo_subjective,Certified,官方认证词,medium
+promo_subjective,Gift,礼品词 谨慎,medium
+promo_subjective,Free,免费词 谨慎,medium
+promo_subjective,Warranty,保修词 谨慎,medium
+promo_subjective,review,引导留评,medium
+promo_subjective,feedback,引导反馈,medium
+promo_subjective,rating,评分词,medium
+promo_subjective,star,星级词,medium
+promo_subjective,positive,评价词,medium
+promo_subjective,negative,评价词,medium
+promo_subjective,comment,评论词,medium
+promo_subjective,Best,绝对化,medium
+promo_subjective,Cheapest,绝对化,medium
+promo_subjective,Amazing,主观,medium
+promo_subjective,Top,绝对化,medium
+promo_subjective,number one,第一,medium
+promo_subjective,#1,排名第一,medium
+platform,Amazon,亚马逊商标 公司名禁用,high
+platform,Prime,亚马逊 Prime,high
+platform,AWS,亚马逊云,high
+platform,FBA,亚马逊物流,high
+platform,KINDLE,亚马逊设备,high
+platform,WHOLE FOODS,亚马逊旗下,high
+platform,AMAZON PHARMACY,亚马逊,high
+platform,AMZ,亚马逊股票代码 禁用,high
+platform,AMZN,亚马逊股票代码,high
+platform,WFM,全食缩写,high
+platform,AMASON,亚马逊近似拼写,high
+platform,PRYME,Prime 近似拼写,high
+cert_medical,FDA,未认证禁用,medium
+cert_medical,EPA,未认证禁用,medium
+cert_medical,官方认证,未认证禁用,medium
+cert_medical,无铅,未认证禁用,medium
+cert_medical,防病毒,非医疗品越界,medium
+cert_medical,disinfect,消毒 越界,medium
+cert_medical,insecticidal,杀虫 越界,medium
+cert_medical,antibacterial,抗菌 未认证禁用,medium
+cert_medical,antimicrobial,抗菌 未认证禁用,medium
+cert_medical,BPA free,谨慎标注,medium
+prohibited,Magic Mushrooms,用户已标记 毒品相关+商标,high
+prohibited,coca leaf,古柯叶 违禁,high
+prohibited,drug,药品/毒品 违禁,high
+prohibited,cannabis,大麻 违禁,high
+prohibited,marijuana,大麻 违禁,high
+prohibited,THC,大麻成分 违禁,high
+prohibited,大麻,违禁,high
+absolute_guarantee,100% effective,绝对化功效,medium
+absolute_guarantee,lifetime,终身 违规承诺,medium
+absolute_guarantee,终身,终身承诺,medium
+absolute_guarantee,全额退款,退款承诺,medium
+absolute_guarantee,无条件保证,保证承诺,medium
+absolute_guarantee,money back guarantee,退款保证,medium
+user_flagged,Magic Mushrooms,用户已标记 重点排查,high
+generic_ambiguous,FOX,狐狸图案或福克斯商标 需人工确认,review
+user_flagged,Toothless,用户已标记 驯龙高手,high
+user_flagged,Trade Dress,用户已标记 商业外观 注意整体视觉雷同,high
+user_flagged,Milkshake,用户已标记 疑似商标,high
+user_flagged,Fleur,用户已标记 疑似商标/品牌,high
+user_flagged,Ledgestone,用户已标记 疑似商标/品牌,high
+user_flagged,Sea Life,用户已标记 疑似商标/品牌,high
+car_brand,Mitsubishi,三菱汽车 用户今日违规案(车型外观专利),high
+car_brand,三菱,三菱(中文) 用户今日违规案,high
+car_brand,Mitsubishi Motors,三菱汽车,high
+car_brand,Lancer,三菱蓝瑟 车型名(今日违规案),high
+car_brand,Lancer Evolution,三菱蓝瑟Evolution 今日违规案,high
+car_brand,Evo,Evolution 三菱车型 兼通用词需确认,review
+car_brand,Toyota,丰田,high
+car_brand,Honda,本田,high
+car_brand,Nissan,日产,high
+car_brand,Mazda,马自达,high
+car_brand,Subaru,斯巴鲁,high
+car_brand,Suzuki,铃木,high
+car_brand,Hyundai,现代,high
+car_brand,Kia,起亚,high
+car_brand,Genesis,捷尼赛思,high
+car_brand,Lexus,雷克萨斯,high
+car_brand,Infiniti,英菲尼迪,high
+car_brand,Acura,讴歌,high
+car_brand,BMW,宝马,high
+car_brand,Mercedes,奔驰,high
+car_brand,Mercedes-Benz,奔驰,high
+car_brand,Audi,奥迪,high
+car_brand,Volkswagen,大众,high
+car_brand,VW,大众,high
+car_brand,Porsche,保时捷,high
+car_brand,Opel,欧宝,high
+car_brand,Skoda,斯柯达,high
+car_brand,SEAT,西雅特 兼座椅(通用义)需确认,review
+car_brand,Cupra,Cupra,high
+car_brand,Volvo,沃尔沃,high
+car_brand,Polestar,极星,high
+car_brand,Saab,萨博,high
+car_brand,Ferrari,法拉利,high
+car_brand,Lamborghini,兰博基尼,high
+car_brand,Lambo,兰博基尼俚语,high
+car_brand,Maserati,玛莎拉蒂,high
+car_brand,Alfa Romeo,阿尔法罗密欧,high
+car_brand,Fiat,菲亚特,high
+car_brand,Lancia,蓝旗亚,high
+car_brand,Abarth,阿巴斯,high
+car_brand,Pagani,帕加尼,high
+car_brand,Bugatti,布加迪,high
+car_brand,Peugeot,标致,high
+car_brand,Renault,雷诺,high
+car_brand,Citroen,雪铁龙,high
+car_brand,Alpine,阿尔派 兼阿尔卑斯山(通用义)需确认,review
+car_brand,Bentley,宾利,high
+car_brand,Rolls-Royce,劳斯莱斯,high
+car_brand,Aston Martin,阿斯顿马丁,high
+car_brand,Jaguar,捷豹,high
+car_brand,Land Rover,路虎,high
+car_brand,Range Rover,揽胜,high
+car_brand,McLaren,迈凯伦,high
+car_brand,Lotus,路特斯 兼莲花(通用义)需确认,review
+car_brand,Tesla,特斯拉,high
+car_brand,Chevrolet,雪佛兰,high
+car_brand,Cadillac,凯迪拉克,high
+car_brand,Buick,别克,high
+car_brand,GMC,GMC,high
+car_brand,Chrysler,克莱斯勒,high
+car_brand,Dodge,道奇,high
+car_brand,Ram,公羊 兼道奇Ram皮卡(通用义)需确认,review
+car_brand,Hummer,悍马,high
+car_brand,Shelby,谢尔比(福特性能品牌),high
+car_brand,BYD,比亚迪,high
+car_brand,NIO,蔚来,high
+car_brand,Li Auto,理想,high
+car_brand,XPeng,小鹏,high
+car_brand,Geely,吉利,high
+car_brand,Great Wall,长城,high
+car_brand,Wuling,五菱,high
+car_brand,Chery,奇瑞,high
+car_brand,Hongqi,红旗,high
+car_brand,Roewe,荣威,high
+car_brand,MG,MG名爵,high
+car_brand,Tata,塔塔,high
+car_brand,Mahindra,马恒达,high
+car_brand,Koenigsegg,科尼赛克,high
+car_brand,Rimac,里马克,high
+car_brand,Spyker,世爵,high
+car_brand,TVR,TVR,high
+car_brand,Noble,诺布尔,high
+car_brand,De Tomaso,德托马索,high
+car_brand,Proton,宝腾,high
+car_brand,Holden,霍顿,high
+car_brand,Pontiac,庞蒂克,high
+car_brand,Oldsmobile,奥兹莫比尔,high
+car_brand,Plymouth,普利茅斯,high
+car_brand,Corvette,科尔维特,high
+car_brand,Camaro,科迈罗,high
+car_brand,Raptor,猛禽(鸟) 兼福特猛禽(通用义)需确认,review
+car_brand,Hellcat,地狱猫(道奇车型),high
+car_brand,GT-R,日产GT-R,high
+car_brand,GTR,日产GT-R,high
+car_brand,WRX,斯巴鲁WRX,high
+car_brand,STI,斯巴鲁STI,high
+car_brand,Countach,兰博基尼,high
+car_brand,Aventador,兰博基尼,high
+car_brand,Huracan,兰博基尼,high
+car_brand,Veyron,布加迪,high
+car_brand,Chiron,布加迪,high
+car_brand,Ford,福特 兼通用义(渡河)需确认,review
+car_brand,Mini,迷你 兼通用义(小)需确认,review
+car_brand,Jeep,吉普 兼通用义需确认,review
+car_brand,Smart,斯玛特 兼通用义(智能)需确认,review
+car_brand,Lincoln,林肯 兼人名/总统需确认,review
+car_brand,Mercury,水星 兼行星需确认,review
+car_brand,Saturn,土星 兼行星需确认,review
+car_brand,Mustang,野马 兼通用义(马)需确认,review
+car_brand,Wrangler,牧马人 兼牛仔裤品牌需确认,review
+car_brand,Cayenne,卡宴 兼辣椒需确认,review
+car_brand,Charger,兼通用义需确认,review
+car_brand,Challenger,兼通用义需确认,review
+car_brand,Explorer,兼通用义需确认,review
+car_brand,Pilot,兼通用义需确认,review
+car_brand,Highlander,高地人 兼通用义需确认,review
+car_brand,Outback,兼通用义需确认,review
+car_brand,Forester,兼通用义需确认,review
+car_brand,Legacy,兼通用义需确认,review
+car_brand,Eclipse,日蚀 兼通用义/天文需确认,review
+car_brand,Mirage,海市蜃楼 兼通用义需确认,review
+car_brand,Diablo,恶魔 兼通用义需确认,review
+car_brand,Phantom,幽灵 兼通用义需确认,review
+car_brand,Ghost,幽灵 兼通用义需确认,review
+car_brand,Continental,兼通用义需确认,review
+car_brand,Cullinan,库里南 兼钻石需确认,review
+car_brand,Vantage,兼通用义需确认,review
+car_brand,Polo,兼马球/通用需确认,review
+car_brand,Golf,高尔夫 兼运动需确认,review
+car_brand,Spyder,蜘蛛 兼通用义需确认,review
+car_brand,Apollo,阿波罗 兼通用/神话需确认,review

@@ -1,0 +1,6 @@
+interface:
+  display_name: "htc上架工作流"
+  short_description: "HTC图片与上架一体化：结构化输入、父子SKU、文案扫描修订及下拉精确校验"
+  default_prompt: "使用 $htc-listing-workflow，先检查一张合并中文输入表；缺项时保留已填内容并只标注待补处，再处理图片、文案及可选上架表。"
+policy:
+  allow_implicit_invocation: true
